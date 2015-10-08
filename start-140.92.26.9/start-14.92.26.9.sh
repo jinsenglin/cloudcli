@@ -12,4 +12,5 @@ route -n
 sudo route del default gw 10.0.2.2
 route -n
 
+cd /vagrant
 ./scripts/start.sh
