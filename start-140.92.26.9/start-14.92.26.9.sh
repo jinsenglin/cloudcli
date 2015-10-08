@@ -6,6 +6,8 @@ echo "NISE_IP_ADDRESS=$NISE_IP_ADDRESS"
 export NISE_IP_ADDRESS=140.92.26.9
 echo "NISE_IP_ADDRESS=$NISE_IP_ADDRESS"
 
+sudo route add -net 140.92.0.0 netmask 255.255.0.0 gw 140.92.26.1
+
 ./scripts/start.sh
 
 #route -n &&
