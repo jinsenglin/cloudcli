@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source ./.env-vars
+
+cf login --skip-ssl-validation -u https://api.$CF_IP.xip.io -u admin -p cfadmin -o org-admin -s space-admin
+

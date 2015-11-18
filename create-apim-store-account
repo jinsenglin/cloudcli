@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source ./.env-vars
+
+if [ $# -lt 5 ]; then
+	echo "Usage Example: $0 jinsenglin Jinsenglin2015! jinseng lin jinsenglin@iii.org.tw"
+	exit 1
+fi
+
+X_ACCOUNT=$1
+X_PASS=$2
+X_USER=$3|$4|$5
+
+curl -k --location -X POST -b cookies $APIM/store/site/blocks/user/sign-up/ajax/user-add.jag -d "action=addUser&username=${X_ACCOUNT}&password=${X_PASS}&allFieldsValues=${X_USER}"
+

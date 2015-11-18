@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ./.env-vars
+
+curl -k --location -X POST -b cookies $APIM/store/site/blocks/subscription/subscription-list/ajax/subscription-list.jag -d "action=getAllSubscriptions"

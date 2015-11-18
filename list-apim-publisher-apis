@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ./.env-vars
+
+curl -k --location -X POST -b cookies $APIM/publisher/site/blocks/listing/ajax/item-list.jag -d "action=getAllAPIs"

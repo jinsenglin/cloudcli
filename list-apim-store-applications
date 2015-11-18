@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ./.env-vars
+
+curl -k --location -X POST -b cookies $APIM/store/site/blocks/application/application-list/ajax/application-list.jag -d "action=getApplications"

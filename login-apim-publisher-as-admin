@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ./.env-vars
+
+curl -k --location -X POST -c cookies $APIM/publisher/site/blocks/user/login/ajax/login.jag -d "action=login&username=admin&password=admin"
