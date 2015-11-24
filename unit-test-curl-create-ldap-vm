@@ -16,4 +16,4 @@ curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d
   \"openStackSecurityGroupID\": \"bosh\",
   \"openStackTenantName\": \"cloudfoundry\",
   \"openStackUserName\": \"devops\"
-}" "http://140.92.26.149:9000/task/create_ldap_vm?api_key=apiKey&api_key=apiKey"
+}" "http://10.5.50.139:9000/task/create_ldap_vm?api_key=apiKey&api_key=apiKey"
