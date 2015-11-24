@@ -19,6 +19,6 @@ curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d
     \"openStackUserName\": \"string\"
   },
   \"ldap\": {
-    \"ldapvmendpoint\": \"10.5.50.131\"
+    \"ldapvmendpoint\": \"192.168.100.10\"
   }
-}" "http://140.92.26.149:9000/task/install_ldap?api_key=apiKey&api_key=apiKey"
+}" "http://10.5.50.139:9000/task/install_ldap?api_key=apiKey&api_key=apiKey"
