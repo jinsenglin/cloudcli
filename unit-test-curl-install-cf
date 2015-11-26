@@ -1,0 +1,31 @@
+curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
+  \"iaas\": {
+    \"iaaSType\": \"openstack\",
+    \"iaaSVMSSHAccount\": \"ubuntu\",
+    \"iaaSVMSSHKeyContent\": \"-----BEGIN RSA PRIVATE KEY-----|MIIEpAIBAAKCAQEAsKqjcP1UYxYicm6yNhmTVkylj+byqX/GccqREY/cUnpJgv1e|Um4vA9xM2vEhx5SfhdxlIyp2zLwmDZSQ81qmV7xdn1OLByzKFEbLh7l4fyIzvPlJ|Du0BN2q0fgXOARxRqaXKSWvxKBc68SVnji1gljOvnYTFdang1Ff0I6TFCeQQHPE6|Lz2iTrIsaAfknBFru9+9paOqbW6F4ME0wvKYOccAAA7cXn2ABCHINuJEXusnDe5t|QV3RrWyWV7LPPJJxzP7hUcHqCV9tsHctuOpN0lWdv9XazkmCmYJQPMca8OEZTbLX|YwiVKp/lmbZpvcG8gWYlsuc0pRsApqnOVvmFYwIDAQABAoIBAQCWDVkk7wZt4q7/|YuYa7T4nXpKA1zfkn5J9s//jWr1XkGY/y9QBT3S/Yq4kiAqY6bNUjw2YAMlGu8fW|YQl8qNIAUw1x9hNv1KsO7dKRRQcDdJldOJ7E/qi52PfU0jlW2CbEYPyfv/7kflah|25NJP2F6MgxHTi4o8lD0CoBiheCVtKTF/6Z9gfClw7pe7D6DcnPaSS/5Cfse3vfP|bEZBCUZbZ7iaChwwgxQWNJOikGfIFwMwTFrjM9Sal/udqrgGustfHa4tbvxduM/b|CVwgj/oaFkuZshAW2Oj6gb0zG1QzuC2m4bOFWS44xE5b2/ul/YvV5fWPvJAGihiP|DTtiFvQBAoGBAOpKafLaqXM+Nlx0mKVI7BXhlifoF0XJ5NPSBwCh7zuEoiZyD3zt|fPin4/9FYNOI2MwcDRw2HD/UxKxquxVsrZeq6o9Qbxi4NZGEs6i1mujh/hf0R1n4|w6NpxA1qarB47DjGBPbmSSX1T5+aspNicka3uvnZ05uVbbkm2mXf+tVhAoGBAMEJ|VBR/JToj48lQ7guF101nzcTS/UCdh/jtOkmzmGj5gz15YacjJzaFoSbzjCLx5GMB|aJY3HklyUNW80Hqrh8IZWtOcFZ+8f9FWGyAoHseRtee8aLWgbV54w2BhXqnUP3w9|JCcYioLF0lZ6cSYvx51vE/nuetZ9aw65QMDqlc1DAoGAVcUYNEfIcN/9lqs4lomz|o+8JwWI94taeZs0ksx6VLfzIP7rR4LIwZfdQiEslv0sB0vcR9Zn5jYSe21/XTWiT|xEpVxFF12l7VfYhPHRwesdLJ6osK8+0V8eTuWNr0Y9Zg5AfaGWkErli35X4EkeAg|ZbMtR/pudS6nFHkcyt7MPQECgYEAqpDHjmTaTAkyWMv9yoi0uVyjYOrdg56uarGS|81SRsw/lewgp1TkmiPKCdpx0ktwR5bl05GZHiLZN3s47mGjASC2HJ7ufD8nLVvky|drN8nvKNPPopu3LJsNQcLqlar80vW2Pa8gCpQuvw8yC1ofxN8ToY+JpUR/oCAryG|DvA49WkCgYAoL+47iU9VZE8kAi2RNyZnbuvzj6v1CdcRBUsa2puvGWEPMDZiZ0me|z+We0x9QcVHe4YcvSsRhgUbi3sDAPjW5LfbvnJGUZ9jYsRbTwK1TW6clblpCugHR|JsEE4Z8wlxHmL1QPRh9c54TWaiio4Pd9EwH7xbfC7U3Qt8BcQc2JJQ==|-----END RSA PRIVATE KEY-----\",
+    \"iaaSVMSSHKeyName\": \"string\",
+    \"openStackAPIKey\": \"string\",
+    \"openStackAuthURL\": \"string\",
+    \"openStackFlavorID\": \"string\",
+    \"openStackImageID\": \"string\",
+    \"openStackNetDNS\": \"8.8.8.8\",
+    \"openStackNetGateway\": \"192.168.100.1\",
+    \"openStackNetID\": \"1ccbedb7-c05b-41ec-849c-e267cf34de3a\",
+    \"openStackNetIPPrivateMicrobosh\": \"192.168.100.14\",
+    \"openStackNetIPPublicMicrobosh\": \"string\",
+    \"openStackNetRange\": \"192.168.100.0/24\",
+    \"openStackSecurityGroupID\": \"string\",
+    \"openStackTenantName\": \"string\",
+    \"openStackUserName\": \"string\"
+  },
+  \"incepton\": {
+    \"inceptionVMEndpoint\": \"192.168.100.11\"
+  },
+  \"ldap\": {
+    \"searchBase\": \"string\",
+    \"searchFilter\": \"string\",
+    \"url\": \"string\",
+    \"userDN\": \"string\",
+    \"userPassword\": \"string\"
+  }
+}" "http://10.5.50.139:9000/task/install_cf?api_key=apiKey&api_key=apiKey"
