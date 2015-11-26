@@ -10,7 +10,7 @@ curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d
     \"openStackImageID\": \"string\",
     \"openStackNetDNS\": \"8.8.8.8\",
     \"openStackNetGateway\": \"192.168.100.1\",
-    \"openStackNetID\": \"3952ebe4-9b6f-4589-9dec-7e932cf30b96\",
+    \"openStackNetID\": \"1ccbedb7-c05b-41ec-849c-e267cf34de3a\",
     \"openStackNetIPPrivateMicrobosh\": \"192.168.100.14\",
     \"openStackNetIPPublicMicrobosh\": \"10.5.50.136\",
     \"openStackNetRange\": \"192.168.100.0/24\",
