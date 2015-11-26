@@ -15,8 +15,8 @@ curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d
     \"openStackNetIPPublicMicrobosh\": \"10.5.50.136\",
     \"openStackNetRange\": \"192.168.100.0/24\",
     \"openStackSecurityGroupID\": \"bosh\",
-    \"openStackTenantName\": \"string\",
-    \"openStackUserName\": \"string\"
+    \"openStackTenantName\": \"cloudfoundry\",
+    \"openStackUserName\": \"devops\"
   },
   \"incepton\": {
     \"inceptionVMEndpoint\": \"192.168.100.11\"
