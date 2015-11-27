@@ -8,9 +8,22 @@ curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d
     \"openStackAuthURL\": \"string\",
     \"openStackFlavorID\": \"string\",
     \"openStackImageID\": \"string\",
+    \"openStackNetCFIPEnd\": \"string\",
+    \"openStackNetCFIPReservedEnd\": \"string\",
+    \"openStackNetCFIPReservedStart\": \"string\",
+    \"openStackNetCFIPStart\": \"string\",
     \"openStackNetDNS\": \"8.8.8.8\",
     \"openStackNetGateway\": \"192.168.100.1\",
     \"openStackNetID\": \"1ccbedb7-c05b-41ec-849c-e267cf34de3a\",
+    \"openStackNetIPPrivateCFConsul\": \"string\",
+    \"openStackNetIPPrivateCFEtcd\": \"string\",
+    \"openStackNetIPPrivateCFHaproxy\": \"string\",
+    \"openStackNetIPPrivateCFNats\": \"string\",
+    \"openStackNetIPPrivateCFNfs\": \"string\",
+    \"openStackNetIPPrivateCFPostgres\": \"string\",
+    \"openStackNetIPPrivateCFRouter\": \"string\",
+    \"openStackNetIPPrivateCFRunner0\": \"string\",
+    \"openStackNetIPPrivateCFRunner1\": \"string\",
     \"openStackNetIPPrivateMicrobosh\": \"192.168.100.14\",
     \"openStackNetIPPublicMicrobosh\": \"string\",
     \"openStackNetRange\": \"192.168.100.0/24\",
@@ -22,10 +35,12 @@ curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d
     \"inceptionVMEndpoint\": \"192.168.100.11\"
   },
   \"ldap\": {
-    \"searchBase\": \"string\",
-    \"searchFilter\": \"string\",
-    \"url\": \"string\",
-    \"userDN\": \"string\",
-    \"userPassword\": \"string\"
+    \"searchBase\": \"ou=developer,dc=devops,dc=io\",
+    \"searchFilter\": \"uid={0}\",
+    \"url\": \"ldap://192.168.100.10:389\",
+    \"userDN\": \"uid=admin,ou=developer,dc=devops,dc=io\",
+    \"userNameAttribute\": \"string\",
+    \"userNameListFilter\": \"string\",
+    \"userPassword\": \"ldapadmin\"
   }
 }" "http://10.5.50.139:9000/task/install_cf?api_key=apiKey&api_key=apiKey"
