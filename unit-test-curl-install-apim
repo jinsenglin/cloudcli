@@ -22,13 +22,17 @@ curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d
     \"openStackUserName\": \"string\"
   },
   \"ldap\": {
+    \"groupNameAttribute\": \"cn\",
+    \"groupNameListFilter\": \"(objectClass=groupOfNames)\",
+    \"groupNameSearchFilter\": \"(&(objectClass=groupOfNames)(cn=?))\",
+    \"groupSearchBase\": \"ou=developer,dc=devops,dc=io\",
     \"searchBase\": \"ou=developer,dc=devops,dc=io\",
     \"searchFilter\": \"string\",
     \"url\": \"ldap://192.168.100.10:389\",
     \"userDN\": \"uid=admin,ou=developer,dc=devops,dc=io\",
     \"userNameAttribute\": \"uid\",
     \"userNameListFilter\": \"(objectClass=inetOrgPerson)\",
-    \"userNameSearchFilter\": \"(&amp;(objectClass=inetOrgPerson)(uid=?))\",
+    \"userNameSearchFilter\": \"(&(objectClass=inetOrgPerson)(uid=?))\",
     \"userPassword\": \"ldapadmin\"
   }
 }" "http://10.5.50.139:9000/task/install_apim?api_key=apiKey&api_key=apiKey"
