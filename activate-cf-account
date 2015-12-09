@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -ex
+
+source ./.env-vars
+
+if [ $# -lt 2 ]; then
+  echo "Usage: $0 <account> <password>"
+  exit 1
+fi
+CF_ACCOUNT=$1
+CF_PASSWORD=$2
+
+	cf login --skip-ssl-validation -u https://api.$CF_IP.xip.io -u $CF_ACCOUNT -p $CF_PASSWORD
+
+	cf login --skip-ssl-validation -u https://api.$CF_IP.xip.io -u $CF_ADMIN_ACCOUNT -p $CF_ADMIN_PASSWORD
+
+		cf create-org org-${CF_ACCOUNT}
+		cf create-space space-${CF_ACCOUNT} -o org-${CF_ACCOUNT}
+		cf create-domain org-${CF_ACCOUNT} ${CF_ACCOUNT}.$CF_IP.xip.io
+		cf set-space-role ${CF_ACCOUNT} org-${CF_ACCOUNT} space-${CF_ACCOUNT} SpaceDeveloper
+
+	cf login --skip-ssl-validation -u https://api.$CF_IP.xip.io -u $CF_ACCOUNT -p $CF_PASSWORD -o org-${CF_ACCOUNT} -s space-${CF_ACCOUNT}
