@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -ex
+
+if [ $# -lt 6 ]; then
+  echo "Usage: $0 <ldap server url> <account> <password> <first name> <last name> <email>"
+  exit 1
+fi
+LDAP_SERVER_URL=$1
+LDAP_ACCOUNT=$2
+LDAP_PASSWORD=$3
+FIRST_NAME=$4
+LAST_NAME=$5
+EMAIL=$6
+
+ldapadd -x -D 'cn=admin,dc=devops,dc=io' -w ldapadmin -H $LDAP_SERVER_URL -f <(cat << EOF
+dn: uid=$LDAP_ACCOUNT,ou=developer,dc=devops,dc=io
+uid: $LDAP_ACCOUNT
+cn: $LDAP_ACCOUNT
+objectclass: inetOrgPerson
+givenName: $FIRST_NAME
+sn: $LAST_NAME
+mail: $EMAIL
+userpassword: $LDAP_PASSWORD
+EOF)
+

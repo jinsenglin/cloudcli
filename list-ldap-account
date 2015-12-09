@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -ex
+
+if [ $# -lt 1 ]; then
+  echo "Usage: $0 <ldap server url>"
+  exit 1
+fi
+LDAP_SERVER_URL=$1
+
+ldapsearch -x -b 'dc=devops,dc=io' -s sub '(objectclass=*)' -H $LDAP_SERVER_URL | grep "dn: uid"
