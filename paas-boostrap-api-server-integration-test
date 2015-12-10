@@ -149,3 +149,66 @@ RESP_INSTALL_CF=$(curl -X POST --header "Content-Type: application/json" --heade
     \"userPassword\": \"$LDAP_USERPASSWORD\"
   }
 }" http://$API_SERVER_IP:9000/task/install_cf?api_key=apiKey&api_key=apiKey)
+
+#
+RESP_CREATE_APIM_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
+  \"iaaSType\": \"openstack\",
+  \"iaaSVMSSHKeyName\": \"$IaaSVMSSHKeyName\",
+  \"openStackAPIKey\": \"$OpenStackAPIKey\",
+  \"openStackAuthURL\": \"$OpenStackAuthURL\",
+  \"openStackFlavorID\": \"2\",
+  \"openStackImageID\": \"$OpenStackImageID\",
+  \"openStackNetID\": \"$OpenStackNetID\",
+  \"openStackSecurityGroupID\": \"$OpenStackSecurityGroupID\",
+  \"openStackTenantName\": \"$OpenStackTenantName\",
+  \"openStackUserName\": \"$OpenStackUserName\"
+}" http://$API_SERVER_IP:9000/task/create_apim_vm?api_key=apiKey&api_key=apiKey)
+
+#
+APIM_IP=$(echo $RESP_CREATE_APIM_VM | jq '.artifact.apimvmendpoint' | sed 's/"//g')
+LDAP_groupNameAttribute=$(echo $RESP_INSTALL_LDAP | jq '.artifact.groupNameAttribute' | sed 's/"//g')
+LDAP_groupNameListFilter=$(echo $RESP_INSTALL_LDAP | jq '.artifact.groupNameListFilter' | sed 's/"//g')
+LDAP_groupNameSearchFilter=$(echo $RESP_INSTALL_LDAP | jq '.artifact.groupNameSearchFilter' | sed 's/"//g')
+LDAP_groupSearchBase=$(echo $RESP_INSTALL_LDAP | jq '.artifact.groupSearchBase' | sed 's/"//g')
+LDAP_userNameAttribute=$(echo $RESP_INSTALL_LDAP | jq '.artifact.userNameAttribute' | sed 's/"//g')
+LDAP_userNameListFilter=$(echo $RESP_INSTALL_LDAP | jq '.artifact.userNameListFilter' | sed 's/"//g')
+LDAP_userNameSearchFilter=$(echo $RESP_INSTALL_LDAP | jq '.artifact.userNameSearchFilter' | sed 's/"//g')
+RESP_INSTALL_APIM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
+  \"apim\": {
+    \"apimvmendpoint\": \"$APIM_IP\"
+  },
+  \"iaas\": {
+    \"iaaSVMSSHAccount\": \"$IaaSVMSSHAccount\",
+    \"iaaSVMSSHKeyContent\": \"$IaaSVMSSHKeyContent\"
+  },
+  \"ldap\": {
+    \"groupNameAttribute\": \"$LDAP_groupNameAttribute\",
+    \"groupNameListFilter\": \"$LDAP_groupNameListFilter\",
+    \"groupNameSearchFilter\": \"$LDAP_groupNameSearchFilter\",
+    \"groupSearchBase\": \"$LDAP_groupSearchBase\",
+    \"searchBase\": \"$LDAP_SEARCHBASE\",
+    \"url\": \"$LDAP_URL\",
+    \"userDN\": \"$LDAP_USERDN\",
+    \"userNameAttribute\": \"$LDAP_userNameAttribute\",
+    \"userNameListFilter\": \"$LDAP_userNameListFilter\",
+    \"userNameSearchFilter\": \"$LDAP_userNameSearchFilter\",
+    \"userPassword\": \"$LDAP_USERPASSWORD\"
+  }
+}" http://$API_SERVER_IP:9000/task/install_apim?api_key=apiKey&api_key=apiKey)
+
+#
+RESP_CREATE_IDP_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
+  \"iaaSType\": \"openstack\",
+  \"iaaSVMSSHKeyName\": \"$IaaSVMSSHKeyName\",
+  \"openStackAPIKey\": \"$OpenStackAPIKey\",
+  \"openStackAuthURL\": \"$OpenStackAuthURL\",
+  \"openStackFlavorID\": \"2\",
+  \"openStackImageID\": \"$OpenStackImageID\",
+  \"openStackNetID\": \"$OpenStackNetID\",
+  \"openStackSecurityGroupID\": \"$OpenStackSecurityGroupID\",
+  \"openStackTenantName\": \"$OpenStackTenantName\",
+  \"openStackUserName\": \"$OpenStackUserName\"
+}" http://$API_SERVER_IP:9000/task/create_idp_vm?api_key=apiKey&api_key=apiKey)
+
+#
+IDP_IP=$(echo $RESP_CREATE_IDP_VM | jq '.artifact.idpvmendpoint' | sed 's/"//g')
