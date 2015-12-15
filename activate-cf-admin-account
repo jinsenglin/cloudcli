@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -ex
+
+source ./.env-vars
+
+cf login --skip-ssl-validation -u https://api.$CF_IP.xip.io -u $CF_ADMIN_ACCOUNT -p $CF_ADMIN_PASSWORD
+
+	cf create-org org-${CF_ADMIN_ACCOUNT}
+	cf create-space space-${CF_ADMIN_ACCOUNT} -o org-${CF_ADMIN_ACCOUNT}
+	cf create-domain org-${CF_ADMIN_ACCOUNT} ${CF_ADMIN_ACCOUNT}.$CF_IP.xip.io
+
+cf login --skip-ssl-validation -u https://api.$CF_IP.xip.io -u $CF_ADMIN_ACCOUNT -p $CF_ADMIN_PASSWORD -o org-${CF_ADMIN_ACCOUNT} -s space-${CF_ADMIN_ACCOUNT}

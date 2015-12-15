@@ -11,10 +11,10 @@ fi
 CF_ACCOUNT=$1
 CF_PASSWORD=$2
 
-	cf login --skip-ssl-validation -u https://api.$CF_IP.xip.io -u $CF_ACCOUNT -p $CF_PASSWORD
 
 	cf login --skip-ssl-validation -u https://api.$CF_IP.xip.io -u $CF_ADMIN_ACCOUNT -p $CF_ADMIN_PASSWORD -o org-${CF_ADMIN_ACCOUNT} -s space-${CF_ADMIN_ACCOUNT}
 
+		cf create-user ${CF_ACCOUNT} ${CF_PASSWORD}
 		cf create-org org-${CF_ACCOUNT}
 		cf create-space space-${CF_ACCOUNT} -o org-${CF_ACCOUNT}
 		cf create-domain org-${CF_ACCOUNT} ${CF_ACCOUNT}.$CF_IP.xip.io

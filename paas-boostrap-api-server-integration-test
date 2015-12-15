@@ -1,0 +1,214 @@
+#!/bin/bash
+
+set -ex
+
+API_SERVER_IP="10.5.50.134" # CHANGE ME
+OpenStackImageID="15278b4d-16cd-4533-adad-3f7274a5d9a9" # CHANGE ME
+OpenStackNetID="571f3006-9fdb-46b2-a242-36dc68fbe9f0" # CHANGE ME
+OpenStackAuthURL="http://10.5.50.3:5000/v2.0/tokens" # CHANGE ME
+OpenStackTenantName="cloudfoundry"
+OpenStackUserName="devops"
+OpenStackAPIKey="devops"
+IaaSVMSSHKeyName="devops"
+OpenStackSecurityGroupID="devops"
+IaaSVMSSHAccount="ubuntu"
+IaaSVMSSHKeyContent="-----BEGIN RSA PRIVATE KEY-----|MIIEpQIBAAKCAQEAxkPuLsrD/ZzLC/P22QVvNsvekTdRTeO97O1z5k63s16jWFUI|ivD3p1ygCRM+gp0sAwmnpzof8HSR/0lanFgBMLja2Cbm+LOgL+P/nRLAXb4Ph6OA|2yOHyb/8wlj3PIn3SmVRqbRJZkKJu8DCxmiZJClKW+I5P1Zh0fJaHW+lS/d3U7ly|fKdztF1Ij4P1/2B327oEgh8jXUlmTmNVsZJbDUV5MwzCfzayVKcoMDZg2Ph6074C|y4yEQYmRxfhyY1pS5UqvCVGVgoHJMmo5wA1gMejrJ0EKzShr4fZUHUBoHNpICXa2|paHxJRU75J/hwsTVlsmsTPhdbyb5na08p6IX1QIDAQABAoIBAQC0f4OH9fEYInZ4|G1LPoLLvIAswCTxrvLpbyJGLSn7TPYVYFZIBa/8KzrijinGOV6iJ23BWPgR11KpV|z2I+k6ABy0jxH/mG0YE0GE3NohSfQzjAM4pL9rzYX4CtLnFnG/OWN0dxSEDKaCkc|VRD9sJw635xiqkGT+AB2Mjz4L3w8+yLU2Gaxak/0sSIE9oMqp3oU3ShELupJiw8C|50Ip5KMIy+ywTg79VS6ky4ESRQR9xcv4PphHiuo4WYNuwFnIPXBVZwZzgmWSpREr|YU2YfAV0M6npYNDkdcTRXnSvq948BIPKJ0ngtYeju8MZLo3azJ18Vplmzs/nHqyH|fZD+4yLBAoGBAPIBFuHMC8mxptTT0oW4xrooO5f5yerrJ0VawREYO0aTDsrThsxg|jR5YQZ4tjEY/agR16P997M5ZNpkz4BKFAkpk7z1WMiDN+WMttFOIg0ipj9TJPZ86|bF6Bo+WxHMtoBT+oSpzPV9EOZzzoDcumL1+/ZzYqh9D6AUT443mMgn77AoGBANG7|R58iFYOR+5+ky7JzUL6b++41cK//8Y5AxVOygYUB8PoK97glyMNP+FvRWMq/IhbQ|Ba8t5LKHlCOUWC7zu2c6TS64O9amEgcSbh7P51Q4H9cm+lBu8FMYXJDTHQfWQOJr|1ZVOXOZhxPcAegc+LY4+I0ceoOs9RXm27/biVMtvAoGBAIoFBwjWN67ba/ubp0hu|nqBTC9HcO0WIwcfzP4NBX6Ubf+c7hniPZEx3J01QSt1Rk2Rh3vW/2svA47uyc0v8|odbOBAfmXgaJkn729Q5jIATT99zyvPtP9bhclZ4NSg/UDpJEp/EQ69OmNEjvS9bm|u8QOxI2G6hjMTOcKT6nl8hL7AoGAEQwm+zFbDFG+YTCU+hFTe9rT9H3VhgjIyqZL|I817p6MLwldH4Wj4059ZcaUnkXtNuwr3m1CgqT5J9UZmkJJxJifgBC8ndgATsQ13|c/u0Mu1I8UUSzZzm3eo6A++VCYEJzx2yw6sV9Af4aZdZU+Ni8o/scCh2LgjR793F|zYyCFfMCgYEAwAdMNvFyYPUVilUmIwVPtZzyiOxsbBW79GqXuSSHhL9AgDdTM5iR|ofVuYjPeWGlFBG6lYSxLVI9my8smlOTCMr8gkMKDb3g0ruIL7fJZx7og3AeulDnD|H2Kx6kOBeBRCiMWPTLNkYHOCI6BAFk/SfwxWngD1kekK7j3BP1hDJ6I=|-----END RSA PRIVATE KEY-----" # CHANGE ME
+OpenStackNetDNS="8.8.8.8"
+OpenStackNetGateway="192.168.100.1"
+OpenStackNetIPPrivateMicrobosh="192.168.100.6"
+OpenStackNetIPPublicMicrobosh="10.5.50.135" # CHANGE ME
+OpenStackNetRange="192.168.100.0/24"
+OpenStackNetCFIPEnd="192.168.100.120"
+OpenStackNetCFIPReservedEnd="192.168.100.100"
+OpenStackNetCFIPReservedStart="192.168.100.2"
+OpenStackNetCFIPStart="192.168.100.101"
+OpenStackNetIPPrivateCFConsul="192.168.100.101"
+OpenStackNetIPPrivateCFEtcd="192.168.100.102"
+OpenStackNetIPPrivateCFHaproxy="192.168.100.103"
+OpenStackNetIPPrivateCFNats="192.168.100.104"
+OpenStackNetIPPrivateCFNfs="192.168.100.105"
+OpenStackNetIPPrivateCFPostgres="192.168.100.106"
+OpenStackNetIPPrivateCFRouter="192.168.100.107"
+OpenStackNetIPPrivateCFRunner="192.168.100.108"
+OpenStackNetIPPublicCF="10.5.50.140" # CHANGE ME
+
+#
+RESP_CREATE_LDAP_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
+  \"iaaSType\": \"openstack\",
+  \"iaaSVMSSHKeyName\": \"$IaaSVMSSHKeyName\",
+  \"openStackAPIKey\": \"$OpenStackAPIKey\",
+  \"openStackAuthURL\": \"$OpenStackAuthURL\",
+  \"openStackFlavorID\": \"2\",
+  \"openStackImageID\": \"$OpenStackImageID\",
+  \"openStackNetID\": \"$OpenStackNetID\",
+  \"openStackSecurityGroupID\": \"$OpenStackSecurityGroupID\",
+  \"openStackTenantName\": \"$OpenStackTenantName\",
+  \"openStackUserName\": \"$OpenStackUserName\"
+}" http://$API_SERVER_IP:9000/task/create_ldap_vm?api_key=apiKey&api_key=apiKey)
+
+#
+LDAP_IP=$(echo $RESP_CREATE_LDAP_VM | jq '.artifact.ldapvmendpoint' | sed 's/"//g')
+RESP_INSTALL_LDAP=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
+  \"iaas\": {
+    \"iaaSVMSSHAccount\": \"$IaaSVMSSHAccount\",
+    \"iaaSVMSSHKeyContent\": \"$IaaSVMSSHKeyContent\"
+  },
+  \"ldap\": {
+    \"ldapvmendpoint\": \"$LDAP_IP\"
+  }
+}" http://$API_SERVER_IP:9000/task/install_ldap?api_key=apiKey&api_key=apiKey)
+
+#
+RESP_CREATE_INCEPTION_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
+  \"iaaSType\": \"openstack\",
+  \"iaaSVMSSHKeyName\": \"$IaaSVMSSHKeyName\",
+  \"openStackAPIKey\": \"$OpenStackAPIKey\",
+  \"openStackAuthURL\": \"$OpenStackAuthURL\",
+  \"openStackFlavorID\": \"2\",
+  \"openStackImageID\": \"$OpenStackImageID\",
+  \"openStackNetID\": \"$OpenStackNetID\",
+  \"openStackSecurityGroupID\": \"$OpenStackSecurityGroupID\",
+  \"openStackTenantName\": \"$OpenStackTenantName\",
+  \"openStackUserName\": \"$OpenStackUserName\"
+}" http://$API_SERVER_IP:9000/task/create_inception_vm?api_key=apiKey&api_key=apiKey)
+
+#
+INCEPTION_IP=$(echo $RESP_CREATE_LDAP_VM | jq '.artifact.inceptionvmendpoint' | sed 's/"//g')
+RESP_INSTALL_INCEPTION=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
+  \"iaas\": {
+    \"iaaSVMSSHAccount\": \"$IaaSVMSSHAccount\",
+    \"iaaSVMSSHKeyContent\": \"$IaaSVMSSHKeyContent\"
+  },
+  \"incepton\": {
+    \"inceptionVMEndpoint\": \"$INCEPTION_IP\"
+  }
+}" http://$API_SERVER_IP:9000/task/install_inception?api_key=apiKey&api_key=apiKey)
+
+#
+RESP_INSTALL_MICROBOSH=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
+  \"iaas\": {
+    \"iaaSType\": \"openstack\",
+    \"iaaSVMSSHAccount\": \"$IaaSVMSSHAccount\",
+    \"iaaSVMSSHKeyContent\": \"$IaaSVMSSHKeyContent\",
+    \"iaaSVMSSHKeyName\": \"$IaaSVMSSHKeyName\",
+    \"openStackAPIKey\": \"$OpenStackAPIKey\",
+    \"openStackAuthURL\": \"$OpenStackAuthURL\",
+    \"openStackNetDNS\": \"$OpenStackNetDNS\",
+    \"openStackNetGateway\": \"$OpenStackNetGateway\",
+    \"openStackNetID\": \"$OpenStackNetID\",
+    \"openStackNetIPPrivateMicrobosh\": \"$OpenStackNetIPPrivateMicrobosh\",
+    \"openStackNetIPPublicMicrobosh\": \"$OpenStackNetIPPublicMicrobosh\",
+    \"openStackNetRange\": \"$OpenStackNetRange\",
+    \"openStackSecurityGroupID\": \"$OpenStackSecurityGroupID\",
+    \"openStackTenantName\": \"$OpenStackTenantName\",
+    \"openStackUserName\": \"$OpenStackUserName\"
+  },
+  \"incepton\": {
+    \"inceptionVMEndpoint\": \"$INCEPTION_IP\"
+  }
+}" http://$API_SERVER_IP:9000/task/install_microbosh?api_key=apiKey&api_key=apiKey)
+
+#
+LDAP_SEARCHBASE=$(echo $RESP_INSTALL_LDAP | jq '.artifact.searchBase' | sed 's/"//g')
+LDAP_SEARCHFILTER=$(echo $RESP_INSTALL_LDAP | jq '.artifact.searchFilter' | sed 's/"//g')
+LDAP_URL=$(echo $RESP_INSTALL_LDAP | jq '.artifact.url' | sed 's/"//g')
+LDAP_USERDN=$(echo $RESP_INSTALL_LDAP | jq '.artifact.userDN' | sed 's/"//g')
+LDAP_USERPASSWORD=$(echo $RESP_INSTALL_LDAP | jq '.artifact.userPassword' | sed 's/"//g')
+RESP_INSTALL_CF=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
+  \"iaas\": {
+    \"iaaSType\": \"openstack\",
+    \"iaaSVMSSHAccount\": \"$IaaSVMSSHAccount\",
+    \"iaaSVMSSHKeyContent\": \"$IaaSVMSSHKeyContent\",
+    \"openStackNetCFIPEnd\": \"$OpenStackNetCFIPEnd\",
+    \"openStackNetCFIPReservedEnd\": \"$OpenStackNetCFIPReservedEnd\",
+    \"openStackNetCFIPReservedStart\": \"$OpenStackNetCFIPReservedStart\",
+    \"openStackNetCFIPStart\": \"$OpenStackNetCFIPStart\",
+    \"openStackNetDNS\": \"$OpenStackNetDNS\",
+    \"openStackNetGateway\": \"$OpenStackNetGateway\",
+    \"openStackNetID\": \"$OpenStackNetID\",
+    \"openStackNetIPPrivateCFConsul\": \"$OpenStackNetIPPrivateCFConsul\",
+    \"openStackNetIPPrivateCFEtcd\": \"$OpenStackNetIPPrivateCFEtcd\",
+    \"openStackNetIPPrivateCFHaproxy\": \"$OpenStackNetIPPrivateCFHaproxy\",
+    \"openStackNetIPPrivateCFNats\": \"$OpenStackNetIPPrivateCFNats\",
+    \"openStackNetIPPrivateCFNfs\": \"$OpenStackNetIPPrivateCFNfs\",
+    \"openStackNetIPPrivateCFPostgres\": \"$OpenStackNetIPPrivateCFPostgres\",
+    \"openStackNetIPPrivateCFRouter\": \"$OpenStackNetIPPrivateCFRouter\",
+    \"openStackNetIPPrivateCFRunner\": \"$OpenStackNetIPPrivateCFRunner\",
+    \"openStackNetIPPrivateMicrobosh\": \"$OpenStackNetIPPrivateMicrobosh\",
+    \"openStackNetIPPublicCF\": \"$OpenStackNetIPPublicCF\",
+    \"openStackNetRange\": \"$OpenStackNetRange\"
+  },
+  \"incepton\": {
+    \"inceptionVMEndpoint\": \"$INCEPTION_IP\"
+  },
+  \"ldap\": {
+    \"searchBase\": \"$LDAP_SEARCHBASE\",
+    \"searchFilter\": \"$LDAP_SEARCHFILTER\",
+    \"url\": \"$LDAP_URL\",
+    \"userDN\": \"$LDAP_USERDN\",
+    \"userPassword\": \"$LDAP_USERPASSWORD\"
+  }
+}" http://$API_SERVER_IP:9000/task/install_cf?api_key=apiKey&api_key=apiKey)
+
+#
+RESP_CREATE_APIM_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
+  \"iaaSType\": \"openstack\",
+  \"iaaSVMSSHKeyName\": \"$IaaSVMSSHKeyName\",
+  \"openStackAPIKey\": \"$OpenStackAPIKey\",
+  \"openStackAuthURL\": \"$OpenStackAuthURL\",
+  \"openStackFlavorID\": \"2\",
+  \"openStackImageID\": \"$OpenStackImageID\",
+  \"openStackNetID\": \"$OpenStackNetID\",
+  \"openStackSecurityGroupID\": \"$OpenStackSecurityGroupID\",
+  \"openStackTenantName\": \"$OpenStackTenantName\",
+  \"openStackUserName\": \"$OpenStackUserName\"
+}" http://$API_SERVER_IP:9000/task/create_apim_vm?api_key=apiKey&api_key=apiKey)
+
+#
+APIM_IP=$(echo $RESP_CREATE_APIM_VM | jq '.artifact.apimvmendpoint' | sed 's/"//g')
+LDAP_groupNameAttribute=$(echo $RESP_INSTALL_LDAP | jq '.artifact.groupNameAttribute' | sed 's/"//g')
+LDAP_groupNameListFilter=$(echo $RESP_INSTALL_LDAP | jq '.artifact.groupNameListFilter' | sed 's/"//g')
+LDAP_groupNameSearchFilter=$(echo $RESP_INSTALL_LDAP | jq '.artifact.groupNameSearchFilter' | sed 's/"//g')
+LDAP_groupSearchBase=$(echo $RESP_INSTALL_LDAP | jq '.artifact.groupSearchBase' | sed 's/"//g')
+LDAP_userNameAttribute=$(echo $RESP_INSTALL_LDAP | jq '.artifact.userNameAttribute' | sed 's/"//g')
+LDAP_userNameListFilter=$(echo $RESP_INSTALL_LDAP | jq '.artifact.userNameListFilter' | sed 's/"//g')
+LDAP_userNameSearchFilter=$(echo $RESP_INSTALL_LDAP | jq '.artifact.userNameSearchFilter' | sed 's/"//g')
+RESP_INSTALL_APIM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
+  \"apim\": {
+    \"apimvmendpoint\": \"$APIM_IP\"
+  },
+  \"iaas\": {
+    \"iaaSVMSSHAccount\": \"$IaaSVMSSHAccount\",
+    \"iaaSVMSSHKeyContent\": \"$IaaSVMSSHKeyContent\"
+  },
+  \"ldap\": {
+    \"groupNameAttribute\": \"$LDAP_groupNameAttribute\",
+    \"groupNameListFilter\": \"$LDAP_groupNameListFilter\",
+    \"groupNameSearchFilter\": \"$LDAP_groupNameSearchFilter\",
+    \"groupSearchBase\": \"$LDAP_groupSearchBase\",
+    \"searchBase\": \"$LDAP_SEARCHBASE\",
+    \"url\": \"$LDAP_URL\",
+    \"userDN\": \"$LDAP_USERDN\",
+    \"userNameAttribute\": \"$LDAP_userNameAttribute\",
+    \"userNameListFilter\": \"$LDAP_userNameListFilter\",
+    \"userNameSearchFilter\": \"$LDAP_userNameSearchFilter\",
+    \"userPassword\": \"$LDAP_USERPASSWORD\"
+  }
+}" http://$API_SERVER_IP:9000/task/install_apim?api_key=apiKey&api_key=apiKey)
+
+#
+RESP_CREATE_IDP_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
+  \"iaaSType\": \"openstack\",
+  \"iaaSVMSSHKeyName\": \"$IaaSVMSSHKeyName\",
+  \"openStackAPIKey\": \"$OpenStackAPIKey\",
+  \"openStackAuthURL\": \"$OpenStackAuthURL\",
+  \"openStackFlavorID\": \"2\",
+  \"openStackImageID\": \"$OpenStackImageID\",
+  \"openStackNetID\": \"$OpenStackNetID\",
+  \"openStackSecurityGroupID\": \"$OpenStackSecurityGroupID\",
+  \"openStackTenantName\": \"$OpenStackTenantName\",
+  \"openStackUserName\": \"$OpenStackUserName\"
+}" http://$API_SERVER_IP:9000/task/create_idp_vm?api_key=apiKey&api_key=apiKey)
+
+#
+IDP_IP=$(echo $RESP_CREATE_IDP_VM | jq '.artifact.idpvmendpoint' | sed 's/"//g')
