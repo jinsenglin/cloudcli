@@ -1,0 +1,12 @@
+users:
+- uid: jinsenglin
+  externalid: uid=jinsenglin,ou=developer,dc=devops,dc=io
+  emails:
+  - jinsenglin@iii.org.tw
+  orgs:
+    - name: org-jinsenglin
+      roles:
+      spaces:
+        - name: space-jinsenglin
+          roles:
+          - developers

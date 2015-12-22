@@ -1,0 +1,4 @@
+uaaurl: https://uaa.10.5.50.140.xip.io
+ccurl: https://api.10.5.50.140.xip.io
+clientid: bulkimport
+secret: bulkimport
