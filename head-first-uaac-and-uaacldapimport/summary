@@ -1,0 +1,20 @@
+1. Create a LDAP account
+
+2. Import LDAP account to CF
+
+2.1 Creating org org-<account>
+
+2.2 Creating org space-<account> 
+
+2.3 Getting uaa token
+
+2.4 HTTP POST http://uaa.10.5.50.140.xip.io/Users
+
+ 2.5 HTTP POST http://api.10.5.50.140.xip.io/v2/users 
+
+2.6 HTTP GET http://api.10.5.50.140.xip.io/v2/organizations?q=name:org-<account>  
+
+2.7 HTTP PUT http://api.10.5.50.140.xip.io/v2/organizations/<orgid>/users/<userid>  
+ 2.8 HTTP GET http://api.10.5.50.140.xip.io/v2/spaces?q=name:space-<account>&q=organization_guid:<orgid>
+
+2.9 HTTP PUT http://api.10.5.50.140.xip.io/v2/spaces/<spaceid>/developers/<userid>
