@@ -1,0 +1,273 @@
++ cf login --skip-ssl-validation -a https://api.10.5.50.140.xip.io -u admin -p cfadmin -o admin -s admin
+API endpoint: https://api.10.5.50.140.xip.io
+Authenticating...
+OK
+
+Targeted org admin
+
+Targeted space admin
+
+
+
+API endpoint:   https://api.10.5.50.140.xip.io (API version: 2.34.0)
+User:           admin
+Org:            admin
+Space:          admin
++ cf create-org org-jinsenglin
+Creating org org-jinsenglin as admin...
+OK
+Org org-jinsenglin already exists
++ cf create-space -o org-jinsenglin space-jinsenglin
+Creating space space-jinsenglin in org org-jinsenglin as admin...
+OK
+Space space-jinsenglin already exists
++ export GOPATH=/home/ubuntu/golang-space
++ GOPATH=/home/ubuntu/golang-space
++ export PATH=/home/ubuntu/.rbenv/plugins/ruby-build/bin:/home/ubuntu/.rbenv/shims:/home/ubuntu/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ubuntu/golang-space/bin
++ PATH=/home/ubuntu/.rbenv/plugins/ruby-build/bin:/home/ubuntu/.rbenv/shims:/home/ubuntu/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ubuntu/golang-space/bin
++ export CF_ENVIRONMENT=/home/ubuntu/.jinseng/environment.yml
++ CF_ENVIRONMENT=/home/ubuntu/.jinseng/environment.yml
++ export LDAP_USERS=/home/ubuntu/.jinseng/user-jinsenglin.yml
++ LDAP_USERS=/home/ubuntu/.jinseng/user-jinsenglin.yml
++ export DEBUG_HTTP=true
++ DEBUG_HTTP=true
++ uaaldapimport
+Getting token.............
+add user id: jinsenglin .........
+POST /Users HTTP/1.1
+Host: uaa.10.5.50.140.xip.io
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiJmZjM5NTUyNS00YzhhLTRhMzktYmQ3Yy00Y2MwN2RkYTk4ZjAiLCJzdWIiOiJidWxraW1wb3J0IiwiYXV0aG9yaXRpZXMiOlsic2NpbS53cml0ZSIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iXSwic2NvcGUiOlsic2NpbS53cml0ZSIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iXSwiY2xpZW50X2lkIjoiYnVsa2ltcG9ydCIsImNpZCI6ImJ1bGtpbXBvcnQiLCJhenAiOiJidWxraW1wb3J0IiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiIyNjlhY2E5MSIsImlhdCI6MTQ1MDc1ODExNCwiZXhwIjoxNDUwODAxMzE0LCJpc3MiOiJodHRwczovL3VhYS4xMC41LjUwLjE0MC54aXAuaW8vb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiYnVsa2ltcG9ydCIsInNjaW0iLCJjbG91ZF9jb250cm9sbGVyIl19.u8oEZe0trDC-9J1SG21CVmJmm5ML5bCj6yJ3_hXVIe4FekWED5njfqLssx0qyvQpvNlfnjN4vN2qz6L_Yxu0T7IumvXGKUSbU0vfmkfV0bAW1PRI9vapWGfW6CQVhjxIxn4aot_ENytGOQioAKzBwMxpLzqfL8MG7YC0paYDpS0
+Content-Type: application/json
+
+{"userName":"jinsenglin","emails":[{"value":"jinsenglin@iii.org.tw"}],"origin":"ldap","externalid":"uid=jinsenglin,ou=developer,dc=devops,dc=io"}
+HTTP/1.1 201 Created
+Content-Length: 1540
+Access-Control-Allow-Origin: *
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Type: application/json;charset=UTF-8
+Date: Tue, 22 Dec 2015 04:21:54 GMT
+Etag: "0"
+Expires: 0
+Pragma: no-cache
+Server: Apache-Coyote/1.1
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Cf-Requestid: d703e80a-9a81-42ab-5773-61e7dfb12334
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+X-Xss-Protection: 1; mode=block
+
+{"id":"21220e99-bbfa-43d9-9abb-85de97b7352e","externalId":"uid=jinsenglin,ou=developer,dc=devops,dc=io","meta":{"version":0,"created":"2015-12-22T04:21:54.998Z","lastModified":"2015-12-22T04:21:54.998Z"},"userName":"jinsenglin","name":{},"emails":[{"value":"jinsenglin@iii.org.tw","primary":false}],"groups":[{"value":"32b6ce7f-9c4b-490e-ad1a-f26f0836c521","display":"cloud_controller.read","type":"DIRECT"},{"value":"55f08b81-849c-4332-9071-cf5b955e4243","display":"openid","type":"DIRECT"},{"value":"83c05331-868f-411c-b68e-5d16bc86f99f","display":"cloud_controller.write","type":"DIRECT"},{"value":"69addef6-6c0e-4044-bf1d-7058bdfdad0d","display":"uaa.user","type":"DIRECT"},{"value":"4c90bcf8-af78-4a5d-a493-b65f95c30b8c","display":"notification_preferences.write","type":"DIRECT"},{"value":"7f4925c0-cf1a-49c1-8195-a17e4c9dbfca","display":"oauth.approvals","type":"DIRECT"},{"value":"c67356da-0b2b-4ded-b9e6-8fc084211c3d","display":"scim.me","type":"DIRECT"},{"value":"fac27e30-217b-4fbf-9af1-c005860896d7","display":"password.write","type":"DIRECT"},{"value":"ce5a202f-d76c-454a-a0a5-1be58ebdb8f2","display":"cloud_controller_service_permissions.read","type":"DIRECT"},{"value":"d26757af-8259-42c0-ae4a-5fff67cfc39f","display":"approvals.me","type":"DIRECT"},{"value":"66343bb3-3b4d-4aa5-957c-3bd624768a30","display":"notification_preferences.read","type":"DIRECT"}],"approvals":[],"active":true,"verified":false,"origin":"ldap","zoneId":"uaa","passwordLastModified":"2015-12-22T04:21:54.998Z","schemas":["urn:scim:schemas:core:1.0"]}
+add user id: jinsenglin with Uaa id: 21220e99-bbfa-43d9-9abb-85de97b7352e .........
+POST /v2/users HTTP/1.1
+Host: api.10.5.50.140.xip.io
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiJmZjM5NTUyNS00YzhhLTRhMzktYmQ3Yy00Y2MwN2RkYTk4ZjAiLCJzdWIiOiJidWxraW1wb3J0IiwiYXV0aG9yaXRpZXMiOlsic2NpbS53cml0ZSIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iXSwic2NvcGUiOlsic2NpbS53cml0ZSIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iXSwiY2xpZW50X2lkIjoiYnVsa2ltcG9ydCIsImNpZCI6ImJ1bGtpbXBvcnQiLCJhenAiOiJidWxraW1wb3J0IiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiIyNjlhY2E5MSIsImlhdCI6MTQ1MDc1ODExNCwiZXhwIjoxNDUwODAxMzE0LCJpc3MiOiJodHRwczovL3VhYS4xMC41LjUwLjE0MC54aXAuaW8vb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiYnVsa2ltcG9ydCIsInNjaW0iLCJjbG91ZF9jb250cm9sbGVyIl19.u8oEZe0trDC-9J1SG21CVmJmm5ML5bCj6yJ3_hXVIe4FekWED5njfqLssx0qyvQpvNlfnjN4vN2qz6L_Yxu0T7IumvXGKUSbU0vfmkfV0bAW1PRI9vapWGfW6CQVhjxIxn4aot_ENytGOQioAKzBwMxpLzqfL8MG7YC0paYDpS0
+Content-Type: application/json
+
+{"guid":"21220e99-bbfa-43d9-9abb-85de97b7352e"}
+HTTP/1.1 201 Created
+Content-Length: 969
+Content-Type: application/json;charset=utf-8
+Date: Tue, 22 Dec 2015 04:21:55 GMT
+Location: /v2/users/21220e99-bbfa-43d9-9abb-85de97b7352e
+Server: nginx
+X-Cf-Requestid: 59f6939e-b0b4-44d5-72ad-8a0f5e7e9bb7
+X-Content-Type-Options: nosniff
+X-Vcap-Request-Id: edb2f5fe-b0b9-4585-4b0c-f2e1004a41dc::756a851f-0d69-483d-9367-5a7cdd3a81a1
+
+{
+  "metadata": {
+    "guid": "21220e99-bbfa-43d9-9abb-85de97b7352e",
+    "url": "/v2/users/21220e99-bbfa-43d9-9abb-85de97b7352e",
+    "created_at": "2015-12-22T04:21:55Z",
+    "updated_at": null
+  },
+  "entity": {
+    "admin": false,
+    "active": false,
+    "default_space_guid": null,
+    "spaces_url": "/v2/users/21220e99-bbfa-43d9-9abb-85de97b7352e/spaces",
+    "organizations_url": "/v2/users/21220e99-bbfa-43d9-9abb-85de97b7352e/organizations",
+    "managed_organizations_url": "/v2/users/21220e99-bbfa-43d9-9abb-85de97b7352e/managed_organizations",
+    "billing_managed_organizations_url": "/v2/users/21220e99-bbfa-43d9-9abb-85de97b7352e/billing_managed_organizations",
+    "audited_organizations_url": "/v2/users/21220e99-bbfa-43d9-9abb-85de97b7352e/audited_organizations",
+    "managed_spaces_url": "/v2/users/21220e99-bbfa-43d9-9abb-85de97b7352e/managed_spaces",
+    "audited_spaces_url": "/v2/users/21220e99-bbfa-43d9-9abb-85de97b7352e/audited_spaces"
+  }
+}
+GET /v2/organizations?q=name:org-jinsenglin HTTP/1.1
+Host: api.10.5.50.140.xip.io
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiJmZjM5NTUyNS00YzhhLTRhMzktYmQ3Yy00Y2MwN2RkYTk4ZjAiLCJzdWIiOiJidWxraW1wb3J0IiwiYXV0aG9yaXRpZXMiOlsic2NpbS53cml0ZSIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iXSwic2NvcGUiOlsic2NpbS53cml0ZSIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iXSwiY2xpZW50X2lkIjoiYnVsa2ltcG9ydCIsImNpZCI6ImJ1bGtpbXBvcnQiLCJhenAiOiJidWxraW1wb3J0IiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiIyNjlhY2E5MSIsImlhdCI6MTQ1MDc1ODExNCwiZXhwIjoxNDUwODAxMzE0LCJpc3MiOiJodHRwczovL3VhYS4xMC41LjUwLjE0MC54aXAuaW8vb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiYnVsa2ltcG9ydCIsInNjaW0iLCJjbG91ZF9jb250cm9sbGVyIl19.u8oEZe0trDC-9J1SG21CVmJmm5ML5bCj6yJ3_hXVIe4FekWED5njfqLssx0qyvQpvNlfnjN4vN2qz6L_Yxu0T7IumvXGKUSbU0vfmkfV0bAW1PRI9vapWGfW6CQVhjxIxn4aot_ENytGOQioAKzBwMxpLzqfL8MG7YC0paYDpS0
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Length: 1508
+Content-Type: application/json;charset=utf-8
+Date: Tue, 22 Dec 2015 04:21:55 GMT
+Server: nginx
+X-Cf-Requestid: 4a5a7eac-49ae-4f0f-68b3-11d6bb9738f1
+X-Content-Type-Options: nosniff
+X-Vcap-Request-Id: fa2ed1e1-7ff5-4f1e-4bb7-be067cddbe96::653b0efa-52a3-4d9f-b37e-60399ee98845
+
+{
+  "total_results": 1,
+  "total_pages": 1,
+  "prev_url": null,
+  "next_url": null,
+  "resources": [
+    {
+      "metadata": {
+        "guid": "cdd20d90-f5bb-4e1f-b14f-089d6987488f",
+        "url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f",
+        "created_at": "2015-12-22T03:48:09Z",
+        "updated_at": null
+      },
+      "entity": {
+        "name": "org-jinsenglin",
+        "billing_enabled": false,
+        "quota_definition_guid": "b8117a48-45c7-4db7-805e-b5f54e0a97a0",
+        "status": "active",
+        "quota_definition_url": "/v2/quota_definitions/b8117a48-45c7-4db7-805e-b5f54e0a97a0",
+        "spaces_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/spaces",
+        "domains_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/domains",
+        "private_domains_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/private_domains",
+        "users_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/users",
+        "managers_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/managers",
+        "billing_managers_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/billing_managers",
+        "auditors_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/auditors",
+        "app_events_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/app_events",
+        "space_quota_definitions_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/space_quota_definitions"
+      }
+    }
+  ]
+}
+Associate user id :jinsenglin to org: cdd20d90-f5bb-4e1f-b14f-089d6987488f.........
+PUT /v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/users/21220e99-bbfa-43d9-9abb-85de97b7352e HTTP/1.1
+Host: api.10.5.50.140.xip.io
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiJmZjM5NTUyNS00YzhhLTRhMzktYmQ3Yy00Y2MwN2RkYTk4ZjAiLCJzdWIiOiJidWxraW1wb3J0IiwiYXV0aG9yaXRpZXMiOlsic2NpbS53cml0ZSIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iXSwic2NvcGUiOlsic2NpbS53cml0ZSIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iXSwiY2xpZW50X2lkIjoiYnVsa2ltcG9ydCIsImNpZCI6ImJ1bGtpbXBvcnQiLCJhenAiOiJidWxraW1wb3J0IiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiIyNjlhY2E5MSIsImlhdCI6MTQ1MDc1ODExNCwiZXhwIjoxNDUwODAxMzE0LCJpc3MiOiJodHRwczovL3VhYS4xMC41LjUwLjE0MC54aXAuaW8vb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiYnVsa2ltcG9ydCIsInNjaW0iLCJjbG91ZF9jb250cm9sbGVyIl19.u8oEZe0trDC-9J1SG21CVmJmm5ML5bCj6yJ3_hXVIe4FekWED5njfqLssx0qyvQpvNlfnjN4vN2qz6L_Yxu0T7IumvXGKUSbU0vfmkfV0bAW1PRI9vapWGfW6CQVhjxIxn4aot_ENytGOQioAKzBwMxpLzqfL8MG7YC0paYDpS0
+Content-Type: application/json
+
+
+HTTP/1.1 201 Created
+Content-Length: 1305
+Content-Type: application/json;charset=utf-8
+Date: Tue, 22 Dec 2015 04:21:55 GMT
+Server: nginx
+X-Cf-Requestid: 374fb6fe-a354-4705-6f55-05ebd5abe20d
+X-Content-Type-Options: nosniff
+X-Vcap-Request-Id: 0d2e6653-c3ae-475e-4351-2d607a22710d::3676da1b-9af8-4e60-a22d-dfa5029567d8
+
+{
+  "metadata": {
+    "guid": "cdd20d90-f5bb-4e1f-b14f-089d6987488f",
+    "url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f",
+    "created_at": "2015-12-22T03:48:09Z",
+    "updated_at": null
+  },
+  "entity": {
+    "name": "org-jinsenglin",
+    "billing_enabled": false,
+    "quota_definition_guid": "b8117a48-45c7-4db7-805e-b5f54e0a97a0",
+    "status": "active",
+    "quota_definition_url": "/v2/quota_definitions/b8117a48-45c7-4db7-805e-b5f54e0a97a0",
+    "spaces_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/spaces",
+    "domains_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/domains",
+    "private_domains_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/private_domains",
+    "users_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/users",
+    "managers_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/managers",
+    "billing_managers_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/billing_managers",
+    "auditors_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/auditors",
+    "app_events_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/app_events",
+    "space_quota_definitions_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f/space_quota_definitions"
+  }
+}
+GET /v2/spaces?q=name:space-jinsenglin&q=organization_guid:cdd20d90-f5bb-4e1f-b14f-089d6987488f HTTP/1.1
+Host: api.10.5.50.140.xip.io
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiJmZjM5NTUyNS00YzhhLTRhMzktYmQ3Yy00Y2MwN2RkYTk4ZjAiLCJzdWIiOiJidWxraW1wb3J0IiwiYXV0aG9yaXRpZXMiOlsic2NpbS53cml0ZSIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iXSwic2NvcGUiOlsic2NpbS53cml0ZSIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iXSwiY2xpZW50X2lkIjoiYnVsa2ltcG9ydCIsImNpZCI6ImJ1bGtpbXBvcnQiLCJhenAiOiJidWxraW1wb3J0IiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiIyNjlhY2E5MSIsImlhdCI6MTQ1MDc1ODExNCwiZXhwIjoxNDUwODAxMzE0LCJpc3MiOiJodHRwczovL3VhYS4xMC41LjUwLjE0MC54aXAuaW8vb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiYnVsa2ltcG9ydCIsInNjaW0iLCJjbG91ZF9jb250cm9sbGVyIl19.u8oEZe0trDC-9J1SG21CVmJmm5ML5bCj6yJ3_hXVIe4FekWED5njfqLssx0qyvQpvNlfnjN4vN2qz6L_Yxu0T7IumvXGKUSbU0vfmkfV0bAW1PRI9vapWGfW6CQVhjxIxn4aot_ENytGOQioAKzBwMxpLzqfL8MG7YC0paYDpS0
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Length: 1492
+Content-Type: application/json;charset=utf-8
+Date: Tue, 22 Dec 2015 04:21:55 GMT
+Server: nginx
+X-Cf-Requestid: ef5c8f9f-6425-449f-6649-2f96b30ea8d2
+X-Content-Type-Options: nosniff
+X-Vcap-Request-Id: e945326c-470e-4a6c-7bfd-23412df42ddb::901deb99-545c-43cd-b974-7c235c7d7db4
+
+{
+  "total_results": 1,
+  "total_pages": 1,
+  "prev_url": null,
+  "next_url": null,
+  "resources": [
+    {
+      "metadata": {
+        "guid": "70a98334-3807-4e01-b488-34a5f15925df",
+        "url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df",
+        "created_at": "2015-12-22T03:48:42Z",
+        "updated_at": null
+      },
+      "entity": {
+        "name": "space-jinsenglin",
+        "organization_guid": "cdd20d90-f5bb-4e1f-b14f-089d6987488f",
+        "space_quota_definition_guid": null,
+        "allow_ssh": true,
+        "organization_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f",
+        "developers_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/developers",
+        "managers_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/managers",
+        "auditors_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/auditors",
+        "apps_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/apps",
+        "routes_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/routes",
+        "domains_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/domains",
+        "service_instances_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/service_instances",
+        "app_events_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/app_events",
+        "events_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/events",
+        "security_groups_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/security_groups"
+      }
+    }
+  ]
+}
+Associate user id :jinsenglin to space: 70a98334-3807-4e01-b488-34a5f15925df with developers role.........
+PUT /v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/developers/21220e99-bbfa-43d9-9abb-85de97b7352e HTTP/1.1
+Host: api.10.5.50.140.xip.io
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiJmZjM5NTUyNS00YzhhLTRhMzktYmQ3Yy00Y2MwN2RkYTk4ZjAiLCJzdWIiOiJidWxraW1wb3J0IiwiYXV0aG9yaXRpZXMiOlsic2NpbS53cml0ZSIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iXSwic2NvcGUiOlsic2NpbS53cml0ZSIsImNsb3VkX2NvbnRyb2xsZXIuYWRtaW4iXSwiY2xpZW50X2lkIjoiYnVsa2ltcG9ydCIsImNpZCI6ImJ1bGtpbXBvcnQiLCJhenAiOiJidWxraW1wb3J0IiwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInJldl9zaWciOiIyNjlhY2E5MSIsImlhdCI6MTQ1MDc1ODExNCwiZXhwIjoxNDUwODAxMzE0LCJpc3MiOiJodHRwczovL3VhYS4xMC41LjUwLjE0MC54aXAuaW8vb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiYnVsa2ltcG9ydCIsInNjaW0iLCJjbG91ZF9jb250cm9sbGVyIl19.u8oEZe0trDC-9J1SG21CVmJmm5ML5bCj6yJ3_hXVIe4FekWED5njfqLssx0qyvQpvNlfnjN4vN2qz6L_Yxu0T7IumvXGKUSbU0vfmkfV0bAW1PRI9vapWGfW6CQVhjxIxn4aot_ENytGOQioAKzBwMxpLzqfL8MG7YC0paYDpS0
+Content-Type: applicatio    n/json
+
+
+HTTP/1.1 201 Created
+Content-Length: 1285
+Content-Type: application/json;charset=utf-8
+Date: Tue, 22 Dec 2015 04:21:55 GMT
+Server: nginx
+X-Cf-Requestid: df130a9b-5312-4c3b-4607-3042901eed9f
+X-Content-Type-Options: nosniff
+X-Vcap-Request-Id: a7e753ab-c268-4b6d-6bb5-6ccbbce6aa5b::48e88db6-5ce0-4e92-886b-7d9f032f2b83
+
+{
+  "metadata": {
+    "guid": "70a98334-3807-4e01-b488-34a5f15925df",
+    "url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df",
+    "created_at": "2015-12-22T03:48:42Z",
+    "updated_at": null
+  },
+  "entity": {
+    "name": "space-jinsenglin",
+    "organization_guid": "cdd20d90-f5bb-4e1f-b14f-089d6987488f",
+    "space_quota_definition_guid": null,
+    "allow_ssh": true,
+    "organization_url": "/v2/organizations/cdd20d90-f5bb-4e1f-b14f-089d6987488f",
+    "developers_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/developers",
+    "managers_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/managers",
+    "auditors_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/auditors",
+    "apps_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/apps",
+    "routes_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/routes",
+    "domains_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/domains",
+    "service_instances_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/service_instances",
+    "app_events_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/app_events",
+    "events_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/events",
+    "security_groups_url": "/v2/spaces/70a98334-3807-4e01-b488-34a5f15925df/security_groups"
+  }
+}
+
