@@ -1,0 +1,17 @@
+
+dn: uid=tomyang,ou=developer,dc=devops,dc=io
+uid: tomyang
+cn: tomyang
+objectclass: inetOrgPerson
+givenName: tom
+sn: yang
+mail: tomyang@iii.org.tw
+userpassword: Tomyang2015!
+
+#dn: cn=subscriber,ou=developer,dc=devops,dc=io
+#cn: subscriber
+#description: subscriber
+#objectclass: groupOfNames
+#member: uid=admin,ou=developer,dc=devops,dc=io
+#member: uid=jinsenglin,ou=developer,dc=devops,dc=io
+
