@@ -1,8 +1,20 @@
 #!/bin/bash
 
+# api call sequences
+# 	01. create_ldap_vm
+# 	02. install_ldap
+#	03. create_inception_vm
+#	04. install_inception
+#	05. install_microbosh
+#	06. install_cf
+#	07. create_apim_vm
+#	08. install_apim
+#	09. create_idp_vm
+#	10. install_idp
+
 set -ex
 
-API_SERVER_IP="10.5.50.134" # CHANGE ME when IaaS changed
+API_SERVER="http://10.5.50.134:9000" # CHANGE IT when platform-installer virtual machine changed
 OpenStackImageID="15278b4d-16cd-4533-adad-3f7274a5d9a9" # CHANGE ME when IaaS changed
 OpenStackNetID="571f3006-9fdb-46b2-a242-36dc68fbe9f0" # CHANGE ME when IaaS changed
 OpenStackAuthURL="http://10.5.50.3:5000/v2.0" # CHANGE ME when IaaS changed
@@ -44,7 +56,7 @@ RESP_CREATE_LDAP_VM=$(curl -X POST --header "Content-Type: application/json" --h
   \"openStackSecurityGroupID\": \"$OpenStackSecurityGroupID\",
   \"openStackTenantName\": \"$OpenStackTenantName\",
   \"openStackUserName\": \"$OpenStackUserName\"
-}" http://$API_SERVER_IP:9000/task/create_ldap_vm?api_key=apiKey&api_key=apiKey)
+}" $API_SERVER/task/create_ldap_vm?api_key=apiKey&api_key=apiKey)
 
 # 2/10
 LDAP_IP=$(echo $RESP_CREATE_LDAP_VM | jq '.artifact.ldapvmendpoint' | sed 's/"//g')
@@ -56,7 +68,7 @@ RESP_INSTALL_LDAP=$(curl -X POST --header "Content-Type: application/json" --hea
   \"ldap\": {
     \"ldapvmendpoint\": \"$LDAP_IP\"
   }
-}" http://$API_SERVER_IP:9000/task/install_ldap?api_key=apiKey&api_key=apiKey)
+}" $API_SERVER/task/install_ldap?api_key=apiKey&api_key=apiKey)
 
 # 3/10
 RESP_CREATE_INCEPTION_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
@@ -70,7 +82,7 @@ RESP_CREATE_INCEPTION_VM=$(curl -X POST --header "Content-Type: application/json
   \"openStackSecurityGroupID\": \"$OpenStackSecurityGroupID\",
   \"openStackTenantName\": \"$OpenStackTenantName\",
   \"openStackUserName\": \"$OpenStackUserName\"
-}" http://$API_SERVER_IP:9000/task/create_inception_vm?api_key=apiKey&api_key=apiKey)
+}" $API_SERVER/task/create_inception_vm?api_key=apiKey&api_key=apiKey)
 
 # 4/10
 INCEPTION_IP=$(echo $RESP_CREATE_LDAP_VM | jq '.artifact.inceptionvmendpoint' | sed 's/"//g')
@@ -82,7 +94,7 @@ RESP_INSTALL_INCEPTION=$(curl -X POST --header "Content-Type: application/json" 
   \"incepton\": {
     \"inceptionVMEndpoint\": \"$INCEPTION_IP\"
   }
-}" http://$API_SERVER_IP:9000/task/install_inception?api_key=apiKey&api_key=apiKey)
+}" $API_SERVER/task/install_inception?api_key=apiKey&api_key=apiKey)
 
 # 5/10
 RESP_INSTALL_MICROBOSH=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
@@ -106,7 +118,7 @@ RESP_INSTALL_MICROBOSH=$(curl -X POST --header "Content-Type: application/json" 
   \"incepton\": {
     \"inceptionVMEndpoint\": \"$INCEPTION_IP\"
   }
-}" http://$API_SERVER_IP:9000/task/install_microbosh?api_key=apiKey&api_key=apiKey)
+}" $API_SERVER/task/install_microbosh?api_key=apiKey&api_key=apiKey)
 
 # 6/10
 LDAP_SEARCHBASE=$(echo $RESP_INSTALL_LDAP | jq '.artifact.searchBase' | sed 's/"//g')
@@ -148,7 +160,7 @@ RESP_INSTALL_CF=$(curl -X POST --header "Content-Type: application/json" --heade
     \"userDN\": \"$LDAP_USERDN\",
     \"userPassword\": \"$LDAP_USERPASSWORD\"
   }
-}" http://$API_SERVER_IP:9000/task/install_cf?api_key=apiKey&api_key=apiKey)
+}" $API_SERVER/task/install_cf?api_key=apiKey&api_key=apiKey)
 
 # 7/10
 RESP_CREATE_APIM_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
@@ -162,7 +174,7 @@ RESP_CREATE_APIM_VM=$(curl -X POST --header "Content-Type: application/json" --h
   \"openStackSecurityGroupID\": \"$OpenStackSecurityGroupID\",
   \"openStackTenantName\": \"$OpenStackTenantName\",
   \"openStackUserName\": \"$OpenStackUserName\"
-}" http://$API_SERVER_IP:9000/task/create_apim_vm?api_key=apiKey&api_key=apiKey)
+}" $API_SERVER/task/create_apim_vm?api_key=apiKey&api_key=apiKey)
 
 # 8/10
 APIM_IP=$(echo $RESP_CREATE_APIM_VM | jq '.artifact.apimvmendpoint' | sed 's/"//g')
@@ -194,7 +206,7 @@ RESP_INSTALL_APIM=$(curl -X POST --header "Content-Type: application/json" --hea
     \"userNameSearchFilter\": \"$LDAP_userNameSearchFilter\",
     \"userPassword\": \"$LDAP_USERPASSWORD\"
   }
-}" http://$API_SERVER_IP:9000/task/install_apim?api_key=apiKey&api_key=apiKey)
+}" $API_SERVER/task/install_apim?api_key=apiKey&api_key=apiKey)
 
 # 9/10
 RESP_CREATE_IDP_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
@@ -208,7 +220,7 @@ RESP_CREATE_IDP_VM=$(curl -X POST --header "Content-Type: application/json" --he
   \"openStackSecurityGroupID\": \"$OpenStackSecurityGroupID\",
   \"openStackTenantName\": \"$OpenStackTenantName\",
   \"openStackUserName\": \"$OpenStackUserName\"
-}" http://$API_SERVER_IP:9000/task/create_idp_vm?api_key=apiKey&api_key=apiKey)
+}" $API_SERVER/task/create_idp_vm?api_key=apiKey&api_key=apiKey)
 
 # 10/10
 IDP_IP=$(echo $RESP_CREATE_IDP_VM | jq '.artifact.idpvmendpoint' | sed 's/"//g')
