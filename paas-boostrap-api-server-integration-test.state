@@ -2,7 +2,7 @@
 export RESP_CREATE_LDAP_VM='{"message":null,"artifact":{"ldapvmendpoint":"192.168.100.4"}}'
 #step2
 export LDAP_IP='192.168.100.4'
-export RESP_INSTALL_LDAP='{"message":null,"artifact":{"groupNameAttribute":"cn","searchBase":"ou=users,ou=system","userDN":"uid=admin,ou=system","groupNameSearchFilter":"(&amp;(objectClass=groupOfUniqueNames)(cn=?))","userPassword":"secret","userNameListFilter":"(objectClass=inetOrgPerson)","userNameAttribute":"uid","userNameSearchFilter":"(&amp;(objectClass=inetOrgPerson)(uid=?))","groupSearchBase":"ou=groups,ou=system","groupNameListFilter":"(objectClass=groupOfUniqueNames)","searchFilter":"uid={0}","url":"ldap://192.168.100.4:10389/"}}'
+export RESP_INSTALL_LDAP='{"message":null,"artifact":{"groupNameAttribute":"cn","searchBase":"ou=users,ou=system","userDN":"uid=admin,ou=system","groupNameSearchFilter":"(&(objectClass=groupOfUniqueNames)(cn=?))","userPassword":"secret","userNameListFilter":"(objectClass=inetOrgPerson)","userNameAttribute":"uid","userNameSearchFilter":"(&(objectClass=inetOrgPerson)(uid=?))","groupSearchBase":"ou=groups,ou=system","groupNameListFilter":"(objectClass=groupOfUniqueNames)","searchFilter":"uid={0}","url":"ldap://192.168.100.4:10389/"}}'
 #step3
 export RESP_CREATE_INCEPTION_VM='{"message":null,"artifact":{"inceptionVMEndpoint":"192.168.100.5"}}'
 #step4
@@ -21,11 +21,11 @@ export LDAP_USERDN='uid=admin,ou=system'
 export LDAP_USERPASSWORD='secret'
 export LDAP_groupNameAttribute='cn'
 export LDAP_groupNameListFilter='(objectClass=groupOfUniqueNames)'
-export LDAP_groupNameSearchFilter='(&amp;(objectClass=groupOfUniqueNames)(cn=?))'
+export LDAP_groupNameSearchFilter='(&(objectClass=groupOfUniqueNames)(cn=?))'
 export LDAP_groupSearchBase='ou=groups,ou=system'
 export LDAP_userNameAttribute='uid'
 export LDAP_userNameListFilter='(objectClass=inetOrgPerson)'
-export LDAP_userNameSearchFilter='(&amp;(objectClass=inetOrgPerson)(uid=?))'
+export LDAP_userNameSearchFilter='(&(objectClass=inetOrgPerson)(uid=?))'
 export RESP_INSTALL_APIM='{"message":null,"artifact":{"apimpublisherAdminUser":"admin","apimstoreAdminUser":"admin","apimpublisherAdminPassword":"admin","apimstoreAdminPassword":"admin","apimpublisherAPIEndpoint":"https://192.168.100.7:9443","apimstoreAPIEndpoint":"https://192.168.100.7:9443"}}'
 #step8
 export RESP_CREATE_IDP_VM='{"message":null,"artifact":{"idpvmendpoint":"192.168.100.8"}}'

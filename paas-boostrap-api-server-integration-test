@@ -78,7 +78,7 @@ RESP_INSTALL_LDAP=$(curl -X POST --header "Content-Type: application/json" --hea
   \"ldap\": {
     \"ldapvmendpoint\": \"$LDAP_IP\"
   }
-}" $API_SERVER/task/install_ldap?api_key=apiKey&api_key=apiKey)
+}" $API_SERVER/task/install_ldap?api_key=apiKey&api_key=apiKey | sed 's/&amp;/\&/g')
 
 echo "#step2" >> paas-boostrap-api-server-integration-test.state
 echo "export LDAP_IP='$LDAP_IP'" >> paas-boostrap-api-server-integration-test.state
@@ -236,7 +236,7 @@ echo "export LDAP_userNameListFilter='$LDAP_userNameListFilter'" >> paas-boostra
 echo "export LDAP_userNameSearchFilter='$LDAP_userNameSearchFilter'" >> paas-boostrap-api-server-integration-test.state
 echo "export RESP_INSTALL_APIM='$RESP_INSTALL_APIM'" >> paas-boostrap-api-server-integration-test.state
 }
-step7
+#step7
 
 # 8/12
 source paas-boostrap-api-server-integration-test.state
