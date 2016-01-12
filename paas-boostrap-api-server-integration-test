@@ -236,7 +236,7 @@ echo "export LDAP_userNameListFilter='$LDAP_userNameListFilter'" >> paas-boostra
 echo "export LDAP_userNameSearchFilter='$LDAP_userNameSearchFilter'" >> paas-boostrap-api-server-integration-test.state
 echo "export RESP_INSTALL_APIM='$RESP_INSTALL_APIM'" >> paas-boostrap-api-server-integration-test.state
 }
-#step7
+step7
 
 # 8/12
 source paas-boostrap-api-server-integration-test.state
@@ -354,12 +354,12 @@ echo "export LDAP_USERDN='$LDAP_USERDN'" >> paas-boostrap-api-server-integration
 echo "export LDAP_USERPASSWORD='$LDAP_USERPASSWORD'" >> paas-boostrap-api-server-integration-test.state
 echo "export LDAP_RESP_INSTALL_CF='$LDAP_RESP_INSTALL_CF'" >> paas-boostrap-api-server-integration-test.state
 }
-step11
+#step11
 
 # 12/12
 source paas-boostrap-api-server-integration-test.state
-function step11() {
-OSSAPI_IP=$(echo $RESP_CREATE_OSSAPI_VM | jq '.artifact.ossapivmendpoint' | sed 's/"//g')
+function step12() {
+OSSAPI_IP=$(echo $RESP_CREATE_OSSAPI_VM | jq '.artifact.ossapiVMEndpoint' | sed 's/"//g')
 RESP_INSTALL_OSSAPI=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
   \"iaas\": {
     \"iaaSVMSSHAccount\": \"$IaaSVMSSHAccount\",

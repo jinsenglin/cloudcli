@@ -29,3 +29,13 @@ export IDP_IP='192.168.100.8'
 export RESP_INSTALL_IDP='{"message":null,"artifact":{"idpadminPassword":"admin","idpwsdl":"https://192.168.100.8/services/TenantMgtService?wsdl","idpadminUser":"admin"}}'
 #step10
 export RESP_CREATE_OSSAPI_VM='{"message":null,"artifact":{"ossapiVMEndpoint":"192.168.100.9"}}'
+#step11
+export INCEPTION_IP='192.168.100.5'
+export LDAP_SEARCHBASE='ou=users,ou=system'
+export LDAP_SEARCHFILTER='uid={0}'
+export LDAP_URL='ldap://192.168.100.4:10389/'
+export LDAP_USERDN='uid=admin,ou=system'
+export LDAP_USERPASSWORD='secret'
+export LDAP_RESP_INSTALL_CF=''
+#step12
+export OSSAPI_IP='192.168.100.9'
