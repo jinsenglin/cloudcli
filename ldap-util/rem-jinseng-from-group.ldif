@@ -1,0 +1,4 @@
+dn: cn=ldapadmin,ou=groups,ou=system
+changetype: modify
+delete: uniqueMember
+uniqueMember: uid=jinseng,ou=users,ou=system 

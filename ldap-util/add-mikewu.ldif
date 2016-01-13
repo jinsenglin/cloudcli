@@ -1,0 +1,11 @@
+dn: uid=mikewu,ou=users,ou=system
+changetype: add
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: person
+objectClass: organizationalPerson
+cn: mikewu
+sn: mikewu
+uid: mikewu
+userPassword: mikewu

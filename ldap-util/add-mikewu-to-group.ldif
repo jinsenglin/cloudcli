@@ -1,0 +1,4 @@
+dn: cn=ldapadmin,ou=groups,ou=system
+changetype: modify
+add: uniqueMember
+uniqueMember: uid=mikewu,ou=users,ou=system 
