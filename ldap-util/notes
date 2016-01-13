@@ -1,0 +1,17 @@
+Example Encrypted Password in LDIF File
+- userPassword:: e3NoYX0wRFBpS3VOSXJyVm1EOElVQ3V3MWhReE5xWmM9
+
+Online Encryption Password Generator
+- http://jlbn.net/passgen/passgen.html
+- input = admin
+- output = {SHA}0DPiKuNIrrVmD8IUCuw1hQxNqZc=
+
+Decode from Base64 format
+- https://www.base64decode.org/
+- input = e3NoYX0wRFBpS3VOSXJyVm1EOElVQ3V3MWhReE5xWmM9
+- output = {sha}0DPiKuNIrrVmD8IUCuw1hQxNqZc=
+
+Encode to Base64 format
+- https://www.base64encode.org/
+- input = {sha}0DPiKuNIrrVmD8IUCuw1hQxNqZc=
+- output = e3NoYX0wRFBpS3VOSXJyVm1EOElVQ3V3MWhReE5xWmM9
