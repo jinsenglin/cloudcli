@@ -1,0 +1,11 @@
+dn: uid=jinseng,ou=users,ou=system
+changetype: add
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: person
+objectClass: organizationalPerson
+cn: jinseng
+sn: jinseng
+uid: jinseng
+userPassword:: e3NoYX0wRFBpS3VOSXJyVm1EOElVQ3V3MWhReE5xWmM9
