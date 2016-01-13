@@ -352,7 +352,7 @@ echo "export LDAP_SEARCHFILTER='$LDAP_SEARCHFILTER'" >> paas-boostrap-api-server
 echo "export LDAP_URL='$LDAP_URL'" >> paas-boostrap-api-server-integration-test.state
 echo "export LDAP_USERDN='$LDAP_USERDN'" >> paas-boostrap-api-server-integration-test.state
 echo "export LDAP_USERPASSWORD='$LDAP_USERPASSWORD'" >> paas-boostrap-api-server-integration-test.state
-echo "export LDAP_RESP_INSTALL_CF='$LDAP_RESP_INSTALL_CF'" >> paas-boostrap-api-server-integration-test.state
+echo "export RESP_INSTALL_CF='$RESP_INSTALL_CF'" >> paas-boostrap-api-server-integration-test.state
 }
 #step11
 
