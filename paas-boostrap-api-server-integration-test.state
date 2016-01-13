@@ -1,22 +1,37 @@
-#step1
-export RESP_CREATE_LDAP_VM='{"message":null,"artifact":{"ldapvmendpoint":"192.168.100.4"}}'
-#step2
-export LDAP_IP='192.168.100.4'
-export RESP_INSTALL_LDAP='{"message":null,"artifact":{"groupNameAttribute":"cn","searchBase":"ou=users,ou=system","userDN":"uid=admin,ou=system","groupNameSearchFilter":"(&(objectClass=groupOfUniqueNames)(cn=?))","userPassword":"secret","userNameListFilter":"(objectClass=inetOrgPerson)","userNameAttribute":"uid","userNameSearchFilter":"(&(objectClass=inetOrgPerson)(uid=?))","groupSearchBase":"ou=groups,ou=system","groupNameListFilter":"(objectClass=groupOfUniqueNames)","searchFilter":"uid={0}","url":"ldap://192.168.100.4:10389/"}}'
-#step3
-export RESP_CREATE_INCEPTION_VM='{"message":null,"artifact":{"inceptionVMEndpoint":"192.168.100.5"}}'
-#step4
-export INCEPTION_IP='192.168.100.5'
+# step1
+# Wed Jan 13 16:27:00 CST 2016
+# Wed Jan 13 16:28:09 CST 2016
+export RESP_CREATE_LDAP_VM='{"message":null,"artifact":{"ldapvmendpoint":"192.168.100.109"}}'
+# step2
+# Wed Jan 13 16:28:09 CST 2016
+# Wed Jan 13 16:33:45 CST 2016
+export LDAP_IP='192.168.100.109'
+export RESP_INSTALL_LDAP='{"message":null,"artifact":{"groupNameAttribute":"cn","searchBase":"ou=users,ou=system","userDN":"uid=admin,ou=system","groupNameSearchFilter":"(&(objectClass=groupOfUniqueNames)(cn=?))","userPassword":"secret","userNameListFilter":"(objectClass=inetOrgPerson)","userNameAttribute":"uid","userNameSearchFilter":"(&(objectClass=inetOrgPerson)(uid=?))","groupSearchBase":"ou=groups,ou=system","groupNameListFilter":"(objectClass=groupOfUniqueNames)","searchFilter":"uid={0}","url":"ldap://192.168.100.109:10389/"}}'
+# step3
+# Wed Jan 13 16:33:45 CST 2016
+# Wed Jan 13 16:34:54 CST 2016
+export RESP_CREATE_INCEPTION_VM='{"message":null,"artifact":{"inceptionVMEndpoint":"192.168.100.11"}}'
+# step4
+# Wed Jan 13 16:34:54 CST 2016
+# Wed Jan 13 16:46:10 CST 2016
+export INCEPTION_IP='192.168.100.11'
 export RESP_INSTALL_INCEPTION='{"message":null}'
-#step5
+# step5
+# Wed Jan 13 16:46:10 CST 2016
+# Wed Jan 13 17:14:16 CST 2016
+export INCEPTION_IP='192.168.100.11'
 export RESP_INSTALL_MICROBOSH='{"message":null}'
-#step6
-export RESP_CREATE_APIM_VM='{"message":null,"artifact":{"apimvmendpoint":"192.168.100.7"}}'
-#step7
-export APIM_IP='192.168.100.7'
-export LDAP_IP='192.168.100.4'
+# step6
+# Wed Jan 13 17:14:16 CST 2016
+# Wed Jan 13 17:15:25 CST 2016
+export RESP_CREATE_APIM_VM='{"message":null,"artifact":{"apimvmendpoint":"192.168.100.110"}}'
+# step7
+# Wed Jan 13 17:15:25 CST 2016
+# Wed Jan 13 17:22:20 CST 2016
+export APIM_IP='192.168.100.110'
+export LDAP_IP='192.168.100.109'
 export LDAP_SEARCHBASE='ou=users,ou=system'
-export LDAP_URL='ldap://192.168.100.4:10389/'
+export LDAP_URL='ldap://192.168.100.109:10389/'
 export LDAP_USERDN='uid=admin,ou=system'
 export LDAP_USERPASSWORD='secret'
 export LDAP_groupNameAttribute='cn'
@@ -26,21 +41,31 @@ export LDAP_groupSearchBase='ou=groups,ou=system'
 export LDAP_userNameAttribute='uid'
 export LDAP_userNameListFilter='(objectClass=inetOrgPerson)'
 export LDAP_userNameSearchFilter='(&(objectClass=inetOrgPerson)(uid=?))'
-export RESP_INSTALL_APIM='{"message":null,"artifact":{"apimpublisherAdminUser":"admin","apimstoreAdminUser":"admin","apimpublisherAdminPassword":"admin","apimstoreAdminPassword":"admin","apimpublisherAPIEndpoint":"https://192.168.100.7:9443","apimstoreAPIEndpoint":"https://192.168.100.7:9443"}}'
-#step8
-export RESP_CREATE_IDP_VM='{"message":null,"artifact":{"idpvmendpoint":"192.168.100.8"}}'
-#step9
-export IDP_IP='192.168.100.8'
-export RESP_INSTALL_IDP='{"message":null,"artifact":{"idpadminPassword":"admin","idpwsdl":"https://192.168.100.8/services/TenantMgtService?wsdl","idpadminUser":"admin"}}'
-#step10
-export RESP_CREATE_OSSAPI_VM='{"message":null,"artifact":{"ossapiVMEndpoint":"192.168.100.9"}}'
-#step11
-export INCEPTION_IP='192.168.100.5'
+export RESP_INSTALL_APIM='{"message":null,"artifact":{"apimpublisherAdminUser":"admin","apimstoreAdminUser":"admin","apimpublisherAdminPassword":"admin","apimstoreAdminPassword":"admin","apimpublisherAPIEndpoint":"https://192.168.100.110:9443","apimstoreAPIEndpoint":"https://192.168.100.110:9443"}}'
+# step8
+# Wed Jan 13 17:22:20 CST 2016
+# Wed Jan 13 17:23:29 CST 2016
+export RESP_CREATE_IDP_VM='{"message":null,"artifact":{"idpvmendpoint":"192.168.100.111"}}'
+# step9
+# Wed Jan 13 17:23:29 CST 2016
+# Wed Jan 13 17:23:30 CST 2016
+export IDP_IP='192.168.100.111'
+export RESP_INSTALL_IDP='{"message":"step2_exec_shell failed","artifact":null}'
+# step10
+# Wed Jan 13 17:23:30 CST 2016
+# Wed Jan 13 17:24:40 CST 2016
+export RESP_CREATE_OSSAPI_VM='{"message":null,"artifact":{"ossapiVMEndpoint":"192.168.100.112"}}'
+# step11
+# Wed Jan 13 17:24:40 CST 2016
+# Wed Jan 13 18:13:46 CST 2016
+export INCEPTION_IP='192.168.100.11'
 export LDAP_SEARCHBASE='ou=users,ou=system'
 export LDAP_SEARCHFILTER='uid={0}'
-export LDAP_URL='ldap://192.168.100.4:10389/'
+export LDAP_URL='ldap://192.168.100.109:10389/'
 export LDAP_USERDN='uid=admin,ou=system'
 export LDAP_USERPASSWORD='secret'
-export LDAP_RESP_INSTALL_CF=''
-#step12
-export OSSAPI_IP='192.168.100.9'
+export RESP_INSTALL_CF='{"message":"step2_exec_shell failed","artifact":null}'
+# step12
+# Wed Jan 13 18:13:46 CST 2016
+# Wed Jan 13 18:14:13 CST 2016
+export OSSAPI_IP='192.168.100.112'

@@ -426,5 +426,6 @@ RESP_INSTALL_OSSAPI=$(curl -X POST --header "Content-Type: application/json" --h
 
 echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
 echo "export OSSAPI_IP='$OSSAPI_IP'" >> paas-boostrap-api-server-integration-test.state
+echo "export RESP_INSTALL_OSSAPI='$RESP_INSTALL_OSSAPI'" >> paas-boostrap-api-server-integration-test.state
 }
 step12
