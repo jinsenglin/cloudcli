@@ -69,3 +69,43 @@ export RESP_INSTALL_CF='{"message":"step2_exec_shell failed","artifact":null}'
 # Wed Jan 13 18:13:46 CST 2016
 # Wed Jan 13 18:14:13 CST 2016
 export OSSAPI_IP='192.168.100.112'
+# step9
+# Wed Jan 13 18:21:35 CST 2016
+# Wed Jan 13 18:22:43 CST 2016
+export IDP_IP='192.168.100.111'
+export RESP_INSTALL_IDP='{"message":null,"artifact":{"idpadminPassword":"admin","idpwsdl":"https://192.168.100.111/services/TenantMgtService?wsdl","idpadminUser":"admin"}}'
+# step12
+# Wed Jan 13 18:24:42 CST 2016
+# Wed Jan 13 18:39:31 CST 2016
+export OSSAPI_IP='192.168.100.112'
+export RESP_INSTALL_OSSAPI='{"message":null,"artifact":{"ossAPIEndpoint":"http://192.168.100.112/v1"}}'
+# step11
+# Wed Jan 13 18:41:22 CST 2016
+# Wed Jan 13 18:42:27 CST 2016
+export INCEPTION_IP='192.168.100.11'
+export LDAP_SEARCHBASE='ou=users,ou=system'
+export LDAP_SEARCHFILTER='uid={0}'
+export LDAP_URL='ldap://192.168.100.109:10389/'
+export LDAP_USERDN='uid=admin,ou=system'
+export LDAP_USERPASSWORD='secret'
+export RESP_INSTALL_CF='{"message":"step2_exec_shell failed","artifact":null}'
+# step11
+# Wed Jan 13 18:43:35 CST 2016
+# Wed Jan 13 18:45:45 CST 2016
+export INCEPTION_IP='192.168.100.11'
+export LDAP_SEARCHBASE='ou=users,ou=system'
+export LDAP_SEARCHFILTER='uid={0}'
+export LDAP_URL='ldap://192.168.100.109:10389/'
+export LDAP_USERDN='uid=admin,ou=system'
+export LDAP_USERPASSWORD='secret'
+export RESP_INSTALL_CF='{"message":"step2_exec_shell failed","artifact":null}'
+# step11
+# Wed Jan 13 18:48:02 CST 2016
+# Wed Jan 13 19:11:25 CST 2016
+export INCEPTION_IP='192.168.100.11'
+export LDAP_SEARCHBASE='ou=users,ou=system'
+export LDAP_SEARCHFILTER='uid={0}'
+export LDAP_URL='ldap://192.168.100.109:10389/'
+export LDAP_USERDN='uid=admin,ou=system'
+export LDAP_USERPASSWORD='secret'
+export RESP_INSTALL_CF='{"message":null,"artifact":{"cfadminPassword":"cfadmin","cfadminUser":"admin","cfapiendpoint":"https://api.10.5.50.140.xip.io"}}'
