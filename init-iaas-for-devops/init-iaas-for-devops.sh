@@ -20,7 +20,10 @@ NETWORK_NAME=devops-dev
 
 # to upload image
 
+KEYPAIR_NAME=devops-dev
+
 # to create ssh key pair
+# bash create-ssh-key-pair.sh
 
 SECURITY_GROUP_NAME=devops-dev
 
