@@ -18,8 +18,6 @@ NETWORK_NAME=devops-dev
 # to link router and subnet
 # bash link-router-and-subnet.sh $ROUTER_ID $SUBNET_ID
 
-# to upload image
-
 KEYPAIR_NAME=devops-dev
 
 # to create ssh key pair
@@ -30,4 +28,7 @@ SECURITY_GROUP_NAME=devops-dev
 # to create security group and rules
 # bash create-security-group-rules-for-devops.sh $SECURITY_GROUP_NAME
 
+CLOUD_IMAGE_ID=412beaba-bb81-4e41-9f0e-afaf0a3aa3ad
+
 # to update integration test script
+bash update-integration-test-script.sh
