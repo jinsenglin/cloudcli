@@ -48,6 +48,9 @@ OpenStackNetIPPublicCF="10.5.50.140" # CHANGE ME when IaaS changed
 
 function step1() {
 # 1/12
+echo "# step1" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
+
 RESP_CREATE_LDAP_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
   \"iaaSType\": \"openstack\",
   \"iaaSVMSSHKeyName\": \"$IaaSVMSSHKeyName\",
@@ -61,14 +64,17 @@ RESP_CREATE_LDAP_VM=$(curl -X POST --header "Content-Type: application/json" --h
   \"openStackUserName\": \"$OpenStackUserName\"
 }" $API_SERVER/task/create_ldap_vm?api_key=apiKey&api_key=apiKey)
 
-echo "#step1" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
 echo "export RESP_CREATE_LDAP_VM='$RESP_CREATE_LDAP_VM'" >> paas-boostrap-api-server-integration-test.state
 }
-#step1
+step1
 
 # 2/12
 source paas-boostrap-api-server-integration-test.state
 function step2() {
+echo "# step2" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
+
 LDAP_IP=$(echo $RESP_CREATE_LDAP_VM | jq '.artifact.ldapvmendpoint' | sed 's/"//g')
 RESP_INSTALL_LDAP=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
   \"iaas\": {
@@ -80,15 +86,18 @@ RESP_INSTALL_LDAP=$(curl -X POST --header "Content-Type: application/json" --hea
   }
 }" $API_SERVER/task/install_ldap?api_key=apiKey&api_key=apiKey | sed 's/&amp;/\&/g')
 
-echo "#step2" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
 echo "export LDAP_IP='$LDAP_IP'" >> paas-boostrap-api-server-integration-test.state
 echo "export RESP_INSTALL_LDAP='$RESP_INSTALL_LDAP'" >> paas-boostrap-api-server-integration-test.state
 }
-#step2
+step2
 
 # 3/12
 source paas-boostrap-api-server-integration-test.state
 function step3() {
+echo "# step3" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
+
 RESP_CREATE_INCEPTION_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
   \"iaaSType\": \"openstack\",
   \"iaaSVMSSHKeyName\": \"$IaaSVMSSHKeyName\",
@@ -102,14 +111,17 @@ RESP_CREATE_INCEPTION_VM=$(curl -X POST --header "Content-Type: application/json
   \"openStackUserName\": \"$OpenStackUserName\"
 }" $API_SERVER/task/create_inception_vm?api_key=apiKey&api_key=apiKey)
 
-echo "#step3" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
 echo "export RESP_CREATE_INCEPTION_VM='$RESP_CREATE_INCEPTION_VM'" >> paas-boostrap-api-server-integration-test.state
 }
-#step3
+step3
 
 # 4/12
 source paas-boostrap-api-server-integration-test.state
 function step4() {
+echo "# step4" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
+
 INCEPTION_IP=$(echo $RESP_CREATE_INCEPTION_VM | jq '.artifact.inceptionVMEndpoint' | sed 's/"//g')
 RESP_INSTALL_INCEPTION=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
   \"iaas\": {
@@ -121,15 +133,18 @@ RESP_INSTALL_INCEPTION=$(curl -X POST --header "Content-Type: application/json" 
   }
 }" $API_SERVER/task/install_inception?api_key=apiKey&api_key=apiKey)
 
-echo "#step4" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
 echo "export INCEPTION_IP='$INCEPTION_IP'" >> paas-boostrap-api-server-integration-test.state
 echo "export RESP_INSTALL_INCEPTION='$RESP_INSTALL_INCEPTION'" >> paas-boostrap-api-server-integration-test.state
 }
-#step4
+step4
 
 # 5/12
 source paas-boostrap-api-server-integration-test.state
 function step5() {
+echo "# step5" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
+
 INCEPTION_IP=$(echo $RESP_CREATE_INCEPTION_VM | jq '.artifact.inceptionVMEndpoint' | sed 's/"//g')
 RESP_INSTALL_MICROBOSH=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
   \"iaas\": {
@@ -154,15 +169,18 @@ RESP_INSTALL_MICROBOSH=$(curl -X POST --header "Content-Type: application/json" 
   }
 }" $API_SERVER/task/install_microbosh?api_key=apiKey&api_key=apiKey)
 
-echo "#step5" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
 echo "export INCEPTION_IP='$INCEPTION_IP'" >> paas-boostrap-api-server-integration-test.state
 echo "export RESP_INSTALL_MICROBOSH='$RESP_INSTALL_MICROBOSH'" >> paas-boostrap-api-server-integration-test.state
 }
-#step5
+step5
 
 # 6/12
 source paas-boostrap-api-server-integration-test.state
 function step6() {
+echo "# step6" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
+
 RESP_CREATE_APIM_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
   \"iaaSType\": \"openstack\",
   \"iaaSVMSSHKeyName\": \"$IaaSVMSSHKeyName\",
@@ -176,14 +194,17 @@ RESP_CREATE_APIM_VM=$(curl -X POST --header "Content-Type: application/json" --h
   \"openStackUserName\": \"$OpenStackUserName\"
 }" $API_SERVER/task/create_apim_vm?api_key=apiKey&api_key=apiKey)
 
-echo "#step6" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
 echo "export RESP_CREATE_APIM_VM='$RESP_CREATE_APIM_VM'" >> paas-boostrap-api-server-integration-test.state
 }
-#step6
+step6
 
 # 7/12
 source paas-boostrap-api-server-integration-test.state
 function step7() {
+echo "# step7" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
+
 APIM_IP=$(echo $RESP_CREATE_APIM_VM | jq '.artifact.apimvmendpoint' | sed 's/"//g')
 LDAP_IP=$(echo $RESP_CREATE_LDAP_VM | jq '.artifact.ldapvmendpoint' | sed 's/"//g')
 LDAP_SEARCHBASE=$(echo $RESP_INSTALL_LDAP | jq '.artifact.searchBase' | sed 's/"//g')
@@ -220,7 +241,7 @@ RESP_INSTALL_APIM=$(curl -X POST --header "Content-Type: application/json" --hea
   }
 }" $API_SERVER/task/install_apim?api_key=apiKey&api_key=apiKey)
 
-echo "#step7" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
 echo "export APIM_IP='$APIM_IP'" >> paas-boostrap-api-server-integration-test.state
 echo "export LDAP_IP='$LDAP_IP'" >> paas-boostrap-api-server-integration-test.state
 echo "export LDAP_SEARCHBASE='$LDAP_SEARCHBASE'" >> paas-boostrap-api-server-integration-test.state
@@ -236,11 +257,14 @@ echo "export LDAP_userNameListFilter='$LDAP_userNameListFilter'" >> paas-boostra
 echo "export LDAP_userNameSearchFilter='$LDAP_userNameSearchFilter'" >> paas-boostrap-api-server-integration-test.state
 echo "export RESP_INSTALL_APIM='$RESP_INSTALL_APIM'" >> paas-boostrap-api-server-integration-test.state
 }
-#step7
+step7
 
 # 8/12
 source paas-boostrap-api-server-integration-test.state
 function step8() {
+echo "# step8" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
+
 RESP_CREATE_IDP_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
   \"iaaSType\": \"openstack\",
   \"iaaSVMSSHKeyName\": \"$IaaSVMSSHKeyName\",
@@ -254,14 +278,17 @@ RESP_CREATE_IDP_VM=$(curl -X POST --header "Content-Type: application/json" --he
   \"openStackUserName\": \"$OpenStackUserName\"
 }" $API_SERVER/task/create_idp_vm?api_key=apiKey&api_key=apiKey)
 
-echo "#step8" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
 echo "export RESP_CREATE_IDP_VM='$RESP_CREATE_IDP_VM'" >> paas-boostrap-api-server-integration-test.state
 }
-#step8
+step8
 
 # 9/12
 source paas-boostrap-api-server-integration-test.state
 function step9() {
+echo "# step9" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
+
 IDP_IP=$(echo $RESP_CREATE_IDP_VM | jq '.artifact.idpvmendpoint' | sed 's/"//g')
 RESP_INSTALL_IDP=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
   \"iaas\": {
@@ -273,15 +300,18 @@ RESP_INSTALL_IDP=$(curl -X POST --header "Content-Type: application/json" --head
   }
 }" $API_SERVER/task/install_idp?api_key=apiKey&api_key=apiKey)
 
-echo "#step9" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
 echo "export IDP_IP='$IDP_IP'" >> paas-boostrap-api-server-integration-test.state
 echo "export RESP_INSTALL_IDP='$RESP_INSTALL_IDP'" >> paas-boostrap-api-server-integration-test.state
 }
-#step9
+step9
 
 # 10/12
 source paas-boostrap-api-server-integration-test.state
 function step10() {
+echo "# step10" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
+
 RESP_CREATE_OSSAPI_VM=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
   \"iaaSType\": \"openstack\",
   \"iaaSVMSSHKeyName\": \"$IaaSVMSSHKeyName\",
@@ -295,14 +325,17 @@ RESP_CREATE_OSSAPI_VM=$(curl -X POST --header "Content-Type: application/json" -
   \"openStackUserName\": \"$OpenStackUserName\"
 }" $API_SERVER/task/create_ossapi_vm?api_key=apiKey&api_key=apiKey)
 
-echo "#step10" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
 echo "export RESP_CREATE_OSSAPI_VM='$RESP_CREATE_OSSAPI_VM'" >> paas-boostrap-api-server-integration-test.state
 }
-#step10
+step10
 
 # 11/12
 source paas-boostrap-api-server-integration-test.state
 function step11() {
+echo "# step11" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
+
 INCEPTION_IP=$(echo $RESP_CREATE_INCEPTION_VM | jq '.artifact.inceptionVMEndpoint' | sed 's/"//g')
 LDAP_SEARCHBASE=$(echo $RESP_INSTALL_LDAP | jq '.artifact.searchBase' | sed 's/"//g')
 LDAP_SEARCHFILTER=$(echo $RESP_INSTALL_LDAP | jq '.artifact.searchFilter' | sed 's/"//g')
@@ -345,7 +378,7 @@ RESP_INSTALL_CF=$(curl -X POST --header "Content-Type: application/json" --heade
   }
 }" $API_SERVER/task/install_cf?api_key=apiKey&api_key=apiKey)
 
-echo "#step11" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
 echo "export INCEPTION_IP='$INCEPTION_IP'" >> paas-boostrap-api-server-integration-test.state
 echo "export LDAP_SEARCHBASE='$LDAP_SEARCHBASE'" >> paas-boostrap-api-server-integration-test.state
 echo "export LDAP_SEARCHFILTER='$LDAP_SEARCHFILTER'" >> paas-boostrap-api-server-integration-test.state
@@ -354,11 +387,14 @@ echo "export LDAP_USERDN='$LDAP_USERDN'" >> paas-boostrap-api-server-integration
 echo "export LDAP_USERPASSWORD='$LDAP_USERPASSWORD'" >> paas-boostrap-api-server-integration-test.state
 echo "export RESP_INSTALL_CF='$RESP_INSTALL_CF'" >> paas-boostrap-api-server-integration-test.state
 }
-#step11
+step11
 
 # 12/12
 source paas-boostrap-api-server-integration-test.state
 function step12() {
+echo "# step12" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
+
 OSSAPI_IP=$(echo $RESP_CREATE_OSSAPI_VM | jq '.artifact.ossapiVMEndpoint' | sed 's/"//g')
 RESP_INSTALL_OSSAPI=$(curl -X POST --header "Content-Type: application/json" --header "Accept: */*" -d "{
   \"iaas\": {
@@ -388,7 +424,7 @@ RESP_INSTALL_OSSAPI=$(curl -X POST --header "Content-Type: application/json" --h
   }
 }" $API_SERVER/task/install_ossapi?api_key=apiKey&api_key=apiKey)
 
-echo "#step12" >> paas-boostrap-api-server-integration-test.state
+echo "# $(date)" >> paas-boostrap-api-server-integration-test.state
 echo "export OSSAPI_IP='$OSSAPI_IP'" >> paas-boostrap-api-server-integration-test.state
 }
-#step12
+step12
